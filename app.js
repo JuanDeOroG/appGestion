@@ -12,6 +12,10 @@ app.use(express.json())
 app.use("/resources", express.static("public"))
 app.use("/resources",express.static(__dirname+"/public"))
 
+// Para usar el motor de vistas ejs (usar condicionales y bucles dentro del html)
+app.set("view engine", "ejs")
+
+
 // Para crear las variables de entorno, normalmente usadas para la base de datos de las apps
 // lo importamos y luego le decimos la ubicación del archivo donde estarán las variables de entorno
 const dotenv = require("dotenv")
