@@ -68,7 +68,7 @@ const connection = require("./database/db")
                 for (let x of rows) {
                     transport=transport + x.transport
                 }
-                console.log("transport es igual a: ",transport)
+                // console.log("transport es igual a: ",transport)
 
                 res.render("categorias", { fecha_actual, data: { transport: transport, restaurants, freetime, groceries, health, pet, bank, gift, home, family, others } })
             }

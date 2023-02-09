@@ -22,104 +22,176 @@
     <div class="container">
         
 
+        
+            <form id="formEnviar" action="/categorias" method="post">
+                <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
+            </form>
+        
     
-    <form id="formEnviar" action="/categorias" method="post">
-        <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
-    </form>
-    
-   
-        <div>
+            <div class="categorias">
             
-            <% if (data  != "undefined") { %>
-                <div>
-                    <!-- Button trigger modal -->
-                    <h4 type="button" data-toggle="modal" data-target="#exampleModal">
-                        transport
-                    </h4>
-                    
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Transport</h5>
-                                    <img class="iconomodal" src="resources/img/transport.svg" alt="transport">
-                                    
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        <label for="method">Payment method:</label>
-                                        <select name="method" id="method">
-                                            <option value="method">Card</option>
-                                            <option value="Cash">Cash</option>
-                                        </select>
-                                        <label for="usage">Usage:</label>
-                                        <select name="usage" id="usage">
-                                            <option value="Car">Car</option>
-                                            <option value="Bus">Bus</option>
-                                            <option value="Taxi">Taxi</option>
-                                            <option value="Airplane">Airplane</option>
-                                        </select>
-
+                <% if (data  != "undefined") { %>
+                    <div>
+                        <!-- Button trigger modal -->
+                        <h4 type="button" data-toggle="modal" data-target="#exampleModal">
+                            transport
+                        </h4>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Transport</h5>
+                                        <img class="iconomodal" src="resources/img/transport.svg" alt="transport">
+                                        
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            <label for="method">Payment method:</label>
+                                            <select name="method" id="method">
+                                                <option value="method">Card</option>
+                                                <option value="Cash">Cash</option>
+                                            </select>
+                                            <label for="usage">Usage:</label>
+                                            <select name="usage" id="usage">
+                                                <option value="Car">Car</option>
+                                                <option value="Bus">Bus</option>
+                                                <option value="Taxi">Taxi</option>
+                                                <option value="Airplane">Airplane</option>
+                                            </select>
 
-                                    <label for="">Expense:</label>
-                                    <input type="number" name="" id="" placeholder="3500">$
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="" id="" placeholder="3500">$
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                        <p><%= data.transport %> $</p>
                     </div>
-                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    <p><%= data.transport %> $</p>
+                    
+                    <div>
+                        <!-- Button trigger modal -->
+                        <h4 type="button" data-toggle="modal" data-target="#exampleModal">
+                            Restaurants
+                        </h4>
+                    
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Restaurants</h5>
+                                        <img class="iconomodal" src="resources/img/transport.svg" alt="transport">
+                    
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            <label for="method">Payment method:</label>
+                                            <select name="method" id="method">
+                                                <option value="method">Card</option>
+                                                <option value="Cash">Cash</option>
+                                            </select>
+                                            <label for="usage">Usage:</label>
+                                            <select name="usage" id="usage">
+                                                <option value="Car">Car</option>
+                                                <option value="Bus">Bus</option>
+                                                <option value="Taxi">Taxi</option>
+                                                <option value="Airplane">Airplane</option>
+                                            </select>
+                    
+                                        </div>
+                    
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="" id="" placeholder="3500">$
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                        <p>
+                            <%= data.restaurants %> $
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h4>Restaurants</h4>
+                    <p>
+                        <%= data.restaurants %> $
+                    </p>
                 </div>
+                    
+                    <div>
+                    <h4>Freetime</h4>
+                    <p><%= data.freetime %> $</p>
+                    </div>
+
+                    <div>
+                    <h4>Groceries</h4>
+                    <p><%= data.groceries %> $</p>
+                    </div>
+
+                    <div>
+                    <h4>health</h4>
+                    <p><%= data.health %> $</p>
+                    </div>
+
+                    <div>
+                    <h4>pet</h4>
+                    <p><%= data.pet %> $</p>
+                    </div>
+
+                    <div>
+                    <h4>bank</h4>
+                    <p><%= data.bank %> $</p>
+                    </div>
+
+                    <div>
+                    <h4>gift</h4>
+                    <p><%= data.gift %> $</p>
+                    </div>
+
+                    <div>
+                    <h4>home</h4>
+                    <p><%= data.home %> $</p>
+                    </div>
+
+                    <div>
+                    <h4>family</h4>
+                    <p><%= data.family %> $</p>
+                    </div>
+
+                    <div>
+                    <h4>others</h4>
+                    <p><%= data.others %> $</p>
+                    </div>
+
+                    
+
+                    
+                <% }else{ %>
+
+                    <p>0 $</p><% } %>
                 
-
-                
-                <h4 >Restaurants</h4>
-                <p><%= data.restaurants %> $</p>
-
-                <h4>Freetime</h4>
-                <p><%= data.freetime %> $</p>
-
-                <h4>Groceries</h4>
-                <p><%= data.groceries %> $</p>
-
-                <h4>health</h4>
-                <p><%= data.health %> $</p>
-
-                <h4>pet</h4>
-                <p><%= data.pet %> $</p>
-
-                <h4>bank</h4>
-                <p><%= data.bank %> $</p>
-
-                <h4>gift</h4>
-                <p><%= data.gift %> $</p>
-
-                <h4>home</h4>
-                <p><%= data.home %> $</p>
-
-                <h4>family</h4>
-                <p><%= data.family %> $</p>
-
-                <h4>others</h4>
-                <p><%= data.others %> $</p>
-
-                
-
-                
-            <% }else{ %>
-
-                <p>0 $</p><% } %>
-            
         </div>
 
 

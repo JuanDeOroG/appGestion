@@ -26,3 +26,9 @@
 h4{
     text-transform:capitalize;
 }
+
+.categorias{
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
