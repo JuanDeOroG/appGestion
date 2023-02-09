@@ -1,0 +1,31 @@
+ .alltitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header{
+    background-color: blueviolet;
+}
+
+.totalcuentas p{
+    position: relative;
+    float: right;
+}
+.totalcuentas{
+    margin-bottom: 4%;
+}
+
+
+.cuentas{
+    border-top: 2px solid rgb(209, 209, 209);
+    border-bottom: 2px solid rgb(214, 214, 214);
+    margin: 3%;
+}
+.naav{
+    font-size: 24px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 15px;
+}

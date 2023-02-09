@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="resources/css/index.css">
+    <link rel="stylesheet" href="resources/css/categoria.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+</head>
+<body>
+    <header class="header">
+    <h3 class="alltitle">TODAS LAS CUENTAS</h3>
+
+
+    </header>
+            <h4 class="countstitle">CUENTAS</h4>
+
+    <div class="container">
+        
+
+    
+    <form id="formEnviar" action="/categorias" method="post">
+        <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
+    </form>
+    
+   
+        <div>
+            
+            <% if (data  != "undefined") { %>
+                <div>
+                    <!-- Button trigger modal -->
+                    <h4 type="button" data-toggle="modal" data-target="#exampleModal">
+                        transport
+                    </h4>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Transport</h5>
+                                    <img class="iconomodal" src="resources/img/transport.svg" alt="transport">
+                                    
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="method">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                        <label for="usage">Usage:</label>
+                                        <select name="usage" id="usage">
+                                            <option value="Car">Car</option>
+                                            <option value="Bus">Bus</option>
+                                            <option value="Taxi">Taxi</option>
+                                            <option value="Airplane">Airplane</option>
+                                        </select>
+
+                                    </div>
+
+                                    <label for="">Expense:</label>
+                                    <input type="number" name="" id="" placeholder="3500">$
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    <p><%= data.transport %> $</p>
+                </div>
+                
+
+                
+                <h4 >Restaurants</h4>
+                <p><%= data.restaurants %> $</p>
+
+                <h4>Freetime</h4>
+                <p><%= data.freetime %> $</p>
+
+                <h4>Groceries</h4>
+                <p><%= data.groceries %> $</p>
+
+                <h4>health</h4>
+                <p><%= data.health %> $</p>
+
+                <h4>pet</h4>
+                <p><%= data.pet %> $</p>
+
+                <h4>bank</h4>
+                <p><%= data.bank %> $</p>
+
+                <h4>gift</h4>
+                <p><%= data.gift %> $</p>
+
+                <h4>home</h4>
+                <p><%= data.home %> $</p>
+
+                <h4>family</h4>
+                <p><%= data.family %> $</p>
+
+                <h4>others</h4>
+                <p><%= data.others %> $</p>
+
+                
+
+                
+            <% }else{ %>
+
+                <p>0 $</p><% } %>
+            
+        </div>
+
+
+
+      
+    </div>
+
+    <nav class="naav">
+        <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" href="/">Cuentas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="">Categorias</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="#">Transacciones</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="#">Resumen</a>
+        </li>
+    </ul></nav>
+
+</body>
+</html>
+<script src="resources/js/fechas.js"></script>
+<script src="resources/js/modales.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

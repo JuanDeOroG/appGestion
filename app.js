@@ -1,5 +1,6 @@
 //Para instanciar los modulos de express
 const express = require("express");
+const moment= require("moment")
 
 //Para Crear servidor de express
 const app = express();
@@ -29,8 +30,102 @@ app.use(session({
     saveUninitialized: true
 }))
 
-app.get("/", (req,res) =>{
-    res.send("Ok, está todo listo, manos a la obra xd bien rarito el man")
+const connection = require("./database/db")
+
+
+
+
+// Rutas gets
+    app.get("/", (req,res) =>{
+        res.render("index.ejs")
+    })
+
+    app.get("/categorias", (req, res) => {
+
+        // Adquirimos la fecha actual para ponerla como fecha inicial en la app
+        let fecha_actual = moment().format('YYYY-MM-DD')
+        
+        connection.query( `SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others FROM categorias WHERE fechagasto="${fecha_actual}"`,(error,rows,fields)=>{
+            if (error) {console.log("Error: ",error)
+            } else if (rows.length == 0) { // En el caso de que no se encuentren resultados en tal fecha
+                console.log("No se encontraron", rows)
+                
+
+                res.render("categorias", { fecha_actual, data: "undefined" })
+
+            } else { // EN EL CASO DE QUE SÍ SE ENCUENTREN RESULTADOS
+                let transport=0;
+                let restaurants = 0;
+                let freetime = 0;
+                let groceries = 0;
+                let health = 0;
+                let pet = 0;
+                let bank = 0;
+                let gift = 0;
+                let home = 0;
+                let family = 0;
+                let others = 0;
+                for (let x of rows) {
+                    transport=transport + x.transport
+                }
+                console.log("transport es igual a: ",transport)
+
+                res.render("categorias", { fecha_actual, data: { transport: transport, restaurants, freetime, groceries, health, pet, bank, gift, home, family, others } })
+            }
+        })
+
+
+    })
+
+app.post("/categorias", (req, res) => {
+
+    // Adquirimos la fecha actual para ponerla como fecha inicial en la app
+    let fechaElegida= req.body.fecha_actual
+
+    connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others FROM categorias WHERE fechagasto="${fechaElegida}"`, (error, rows, fields) => {
+        if (error) {
+            console.log("Error: ", error)
+        } else if (rows.length == 0) {
+            console.log("No se encontraron", rows)
+
+
+            res.render("categorias", { fecha_actual:fechaElegida, data: "undefined" })
+
+        } else {
+            let transport = 0;
+            let restaurants = 0;
+            let freetime = 0;
+            let groceries = 0;
+            let health = 0;
+            let pet = 0;
+            let bank = 0;
+            let gift = 0;
+            let home = 0;
+            let family = 0;
+            let others = 0;
+
+
+            for (let x of rows) {
+                transport = transport + x.transport
+                restaurants+= x.restaurants
+                freetime += x.freetime
+                groceries += x.groceries
+                health += x.health
+                pet += x.pet
+                bank += x.bank
+                gift += x.gift
+                home += x.home
+                family += x.family
+                others += x.others
+
+
+            }
+
+            res.render("categorias", { fecha_actual: fechaElegida, data: { transport: transport,restaurants,freetime,groceries,health,pet,bank,gift,home,family,others } })
+        }
+    })
+
+
 })
 
 app.listen(3000, (req,res)=>{
