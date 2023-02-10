@@ -22,15 +22,20 @@
     <div class="container">
         
 
-        
+        <% if(data=="undefined"){%>
+            
             <form id="formEnviar" action="/categorias" method="post">
+                <label for="fecha_actual">Today</label>
                 <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
             </form>
+            <% }else{ %>
+                <form id="formEnviar" action="/categorias" method="post">
+                    <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
+                </form><% } %>
         
     
             <div class="categorias">
             
-                <% if (data  != "undefined") { %>
                     <div>
                         <!-- Button trigger modal -->
                         <h4 type="button" data-toggle="modal" data-target="#exampleModal">
@@ -69,7 +74,10 @@
                             </div>
                         </div>
                         <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                        <% if(data.transport){ %>
                         <p><%= data.transport %> $</p>
+                        <% }else{ %>
+                            <p>0 $</p><% } %>
                     </div>
                     
                     <div>
@@ -113,9 +121,13 @@
                             </div>
                         </div>
                         <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                        <p>
-                            <%= data.restaurants %> $
-                        </p>
+                        <% if(data.transport){ %>
+                            <p>
+                                <%= data.restaurants %> $
+                            </p>
+                            <% }else{ %>
+                                <p>0 $</p>
+                                <% } %>
                         
                         
                     </div>
@@ -158,9 +170,13 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    <p>
-                        <%= data.freetime %> $
-                    </p>
+                    <% if(data.transport){ %>
+                        <p>
+                            <%= data.freetime %> $
+                        </p>
+                        <% }else{ %>
+                            <p>0 $</p>
+                            <% } %>
                 </div>
 
                 <div>
@@ -201,16 +217,20 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    <p>
-                        <%= data.groceries %> $
-                    </p>
+                    <% if(data.transport){ %>
+                        <p>
+                            <%= data.groceries %> $
+                        </p>
+                        <% }else{ %>
+                            <p>0 $</p>
+                            <% } %>
                 </div>
                     
 
                 <div>
                     <!-- Button trigger modal -->
                     <h4 type="button" data-toggle="modal" data-target="#healthModal">
-                        Healt
+                        Health
                     </h4>
                 
                     <!-- Modal Health -->
@@ -245,9 +265,13 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                <% if(data.transport){ %>
                     <p>
                         <%= data.health %> $
                     </p>
+                    <% }else{ %>
+                        <p>0 $</p>
+                        <% } %>
                 </div>
 
                 <div>
@@ -287,9 +311,13 @@
                             </div>
                         </div>
                     </div>
-                    <p>
-                        <%= data.pet %> $
-                    </p>
+                    <% if(data.transport){ %>
+                        <p>
+                            <%= data.pet %> $
+                        </p>
+                        <% }else{ %>
+                            <p>0 $</p>
+                            <% } %>
                 </div>
 
                 <div>
@@ -330,9 +358,13 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    <p>
-                        <%= data.bank %> $
-                    </p>
+                    <% if(data.transport){ %>
+                        <p>
+                            <%= data.bank %> $
+                        </p>
+                        <% }else{ %>
+                            <p>0 $</p>
+                            <% } %>
                 </div>
                 
                 <div>
@@ -373,9 +405,13 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                <% if(data.transport){ %>
                     <p>
                         <%= data.gift %> $
                     </p>
+                    <% }else{ %>
+                        <p>0 $</p>
+                        <% } %>
                 </div>
 
                     
@@ -417,9 +453,13 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    <p>
-                        <%= data.home %> $
-                    </p>
+                    <% if(data.transport){ %>
+                        <p>
+                            <%= data.home %> $
+                        </p>
+                        <% }else{ %>
+                            <p>0 $</p>
+                            <% } %>
                 </div>
 
                 <div>
@@ -460,9 +500,13 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    <p>
-                        <%= data.family %> $
-                    </p>
+                    <% if(data.transport){ %>
+                        <p>
+                            <%= data.family %> $
+                        </p>
+                        <% }else{ %>
+                            <p>0 $</p>
+                            <% } %>
                 </div>
                     
                 
@@ -504,17 +548,19 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    <p>
-                        <%= data.others %> $
-                    </p>
+                    <% if(data.transport){ %>
+                        <p>
+                            <%= data.others %> $
+                        </p>
+                        <% }else{ %>
+                            <p>0 $</p>
+                            <% } %>
                 </div>
                    
                     
 
                     
-                <% }else{ %>
-
-                    <p>0 $</p><% } %>
+               
                 
         </div>
 
