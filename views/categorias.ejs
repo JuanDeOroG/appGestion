@@ -37,7 +37,7 @@
                             transport
                         </h4>
                         
-                        <!-- Modal -->
+                        <!-- Modal TRANSPORT -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -45,7 +45,6 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Transport</h5>
                                         <img class="iconomodal" src="resources/img/transport.svg" alt="transport">
-                                        
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -57,14 +56,6 @@
                                                 <option value="method">Card</option>
                                                 <option value="Cash">Cash</option>
                                             </select>
-                                            <label for="usage">Usage:</label>
-                                            <select name="usage" id="usage">
-                                                <option value="Car">Car</option>
-                                                <option value="Bus">Bus</option>
-                                                <option value="Taxi">Taxi</option>
-                                                <option value="Airplane">Airplane</option>
-                                            </select>
-
                                         </div>
 
                                         <label for="">Expense:</label>
@@ -83,18 +74,18 @@
                     
                     <div>
                         <!-- Button trigger modal -->
-                        <h4 type="button" data-toggle="modal" data-target="#exampleModal">
+                        <h4 type="button" data-toggle="modal" data-target="#restaurantsModal">
                             Restaurants
                         </h4>
                     
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        <!-- Modal RESTAURANT -->
+                        <div class="modal fade" id="restaurantsModal" tabindex="-1" role="dialog" aria-labelledby="restaurantsModal"
                             aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Restaurants</h5>
-                                        <img class="iconomodal" src="resources/img/transport.svg" alt="transport">
+                                        <img class="iconomodal" src="resources/img/restaurants.svg" alt="transport">
                     
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
@@ -107,13 +98,7 @@
                                                 <option value="method">Card</option>
                                                 <option value="Cash">Cash</option>
                                             </select>
-                                            <label for="usage">Usage:</label>
-                                            <select name="usage" id="usage">
-                                                <option value="Car">Car</option>
-                                                <option value="Bus">Bus</option>
-                                                <option value="Taxi">Taxi</option>
-                                                <option value="Airplane">Airplane</option>
-                                            </select>
+                                            
                     
                                         </div>
                     
@@ -131,60 +116,399 @@
                         <p>
                             <%= data.restaurants %> $
                         </p>
+                        
+                        
                     </div>
                     
-                    <div>
-                        <h4>Restaurants</h4>
+                <div>
+                    <!-- Button trigger modal -->
+                    <h4 type="button" data-toggle="modal" data-target="#freetimeModal">
+                        Freetime
+                    </h4>
+                
+                    <!-- Modal FREETIME -->
+                    <div class="modal fade" id="freetimeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Freetime</h5>
+                                    <img class="iconomodal" src="resources/img/freetime.svg" >
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="method">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+                
+                                    <label for="">Expense:</label>
+                                    <input type="number" name="" id="" placeholder="3500">$
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
                     <p>
-                        <%= data.restaurants %> $
+                        <%= data.freetime %> $
+                    </p>
+                </div>
+
+                <div>
+                    <!-- Button trigger modal -->
+                    <h4 type="button" data-toggle="modal" data-target="#groceriesModal">
+                        Groceries
+                    </h4>
+                
+                    <!-- Modal GROCERIES -->
+                    <div class="modal fade" id="groceriesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Groceries</h5>
+                                    <img class="iconomodal" src="resources/img/groceries.svg" >
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="method">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+                
+                                    <label for="">Expense:</label>
+                                    <input type="number" name="" id="" placeholder="3500">$
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    <p>
+                        <%= data.groceries %> $
                     </p>
                 </div>
                     
-                    <div>
-                    <h4>Freetime</h4>
-                    <p><%= data.freetime %> $</p>
-                    </div>
 
-                    <div>
-                    <h4>Groceries</h4>
-                    <p><%= data.groceries %> $</p>
+                <div>
+                    <!-- Button trigger modal -->
+                    <h4 type="button" data-toggle="modal" data-target="#healthModal">
+                        Healt
+                    </h4>
+                
+                    <!-- Modal Health -->
+                    <div class="modal fade" id="healthModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Health</h5>
+                                    <img class="iconomodal" src="resources/img/health.svg">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="method">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+                
+                                    <label for="">Expense:</label>
+                                    <input type="number" name="" id="" placeholder="3500">$
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    <p>
+                        <%= data.health %> $
+                    </p>
+                </div>
 
-                    <div>
-                    <h4>health</h4>
-                    <p><%= data.health %> $</p>
+                <div>
+                    <!-- Button trigger modal -->
+                    <h4 type="button" data-toggle="modal" data-target="#petModal">
+                        Pet
+                    </h4>
+                
+                    <!-- Modal PET -->
+                    <div class="modal fade" id="petModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Pet</h5>
+                                    <img class="iconomodal" src="resources/img/pet.svg">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="method">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+                
+                                    <label for="">Expense:</label>
+                                    <input type="number" name="" id="" placeholder="3500">$
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <p>
+                        <%= data.pet %> $
+                    </p>
+                </div>
 
-                    <div>
-                    <h4>pet</h4>
-                    <p><%= data.pet %> $</p>
+                <div>
+                    <!-- Button trigger modal -->
+                    <h4 type="button" data-toggle="modal" data-target="#bankModal">
+                        Bank
+                    </h4>
+                
+                    <!-- Modal BANK -->
+                    <div class="modal fade" id="bankModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Bank</h5>
+                                    <img class="iconomodal" src="resources/img/bank.svg">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="method">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+                
+                                    <label for="">Expense:</label>
+                                    <input type="number" name="" id="" placeholder="3500">$
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div>
-                    <h4>bank</h4>
-                    <p><%= data.bank %> $</p>
+                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    <p>
+                        <%= data.bank %> $
+                    </p>
+                </div>
+                
+                <div>
+                    <!-- Button trigger modal -->
+                    <h4 type="button" data-toggle="modal" data-target="#giftModal">
+                        Gift
+                    </h4>
+                
+                    <!-- Modal GIFT -->
+                    <div class="modal fade" id="giftModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Gift</h5>
+                                    <img class="iconomodal" src="resources/img/gift.svg">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="method">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+                
+                                    <label for="">Expense:</label>
+                                    <input type="number" name="" id="" placeholder="3500">$
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    <p>
+                        <%= data.gift %> $
+                    </p>
+                </div>
 
-                    <div>
-                    <h4>gift</h4>
-                    <p><%= data.gift %> $</p>
+                    
+                <div>
+                    <!-- Button trigger modal -->
+                    <h4 type="button" data-toggle="modal" data-target="#homeModal">
+                        Home
+                    </h4>
+                
+                    <!-- Modal HOME -->
+                    <div class="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Home</h5>
+                                    <img class="iconomodal" src="resources/img/home.svg">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="method">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+                
+                                    <label for="">Expense:</label>
+                                    <input type="number" name="" id="" placeholder="3500">$
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    <p>
+                        <%= data.home %> $
+                    </p>
+                </div>
 
-                    <div>
-                    <h4>home</h4>
-                    <p><%= data.home %> $</p>
+                <div>
+                    <!-- Button trigger modal -->
+                    <h4 type="button" data-toggle="modal" data-target="#familyModal">
+                        Family
+                    </h4>
+                
+                    <!-- Modal HOME -->
+                    <div class="modal fade" id="familyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Family</h5>
+                                    <img class="iconomodal" src="resources/img/family.svg">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="method">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+                
+                                    <label for="">Expense:</label>
+                                    <input type="number" name="" id="" placeholder="3500">$
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div>
-                    <h4>family</h4>
-                    <p><%= data.family %> $</p>
+                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    <p>
+                        <%= data.family %> $
+                    </p>
+                </div>
+                    
+                
+                <div>
+                    <!-- Button trigger modal -->
+                    <h4 type="button" data-toggle="modal" data-target="#othersModal">
+                        Others
+                    </h4>
+                
+                    <!-- Modal OTHERS -->
+                    <div class="modal fade" id="othersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Others</h5>
+                                    <img class="iconomodal" src="resources/img/others.svg">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="method">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+                
+                                    <label for="">Expense:</label>
+                                    <input type="number" name="" id="" placeholder="3500">$
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div>
-                    <h4>others</h4>
-                    <p><%= data.others %> $</p>
-                    </div>
-
+                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    <p>
+                        <%= data.others %> $
+                    </p>
+                </div>
+                   
                     
 
                     
