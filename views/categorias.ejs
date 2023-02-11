@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="resources/css/index.css">
     <link rel="stylesheet" href="resources/css/categoria.css">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&display=swap"
+                rel="stylesheet">
 </head>
 <body>
     <header class="header">
@@ -39,7 +43,22 @@
                     <div>
                         <!-- Button trigger modal -->
                         <h4 type="button" data-toggle="modal" data-target="#exampleModal">
-                            transport
+                            <div class="cards-list">
+                            
+                                <div class="card 1">
+                                    <div class="card_image"> <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/398d2ed9-abe9-4fc8-a5c8-9ab48e85e0fe/dam96et-b2a958bd-0a13-472a-974f-25882ee3b3c4.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM5OGQyZWQ5LWFiZTktNGZjOC1hNWM4LTlhYjQ4ZTg1ZTBmZVwvZGFtOTZldC1iMmE5NThiZC0wYTEzLTQ3MmEtOTc0Zi0yNTg4MmVlM2IzYzQuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.SGheXHUbV88sDuTuo1DB-JB1n60I92a30B41pR72gzk" /> </div>
+                                    <div class="card_title title-white">
+                                        <p>Transport</p>
+                                        <% if(data.transport){ %>
+                                            <p>
+                                                <%= data.transport %> $
+                                            </p>
+                                            <% }else{ %>
+                                                <p>0 $</p>
+                                                <% } %>
+                                    </div>
+                                </div>
+                            </div>
                         </h4>
                         
                         <!-- Modal TRANSPORT -->
@@ -74,16 +93,28 @@
                             </div>
                         </div>
                         <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                        <% if(data.transport){ %>
-                        <p><%= data.transport %> $</p>
-                        <% }else{ %>
-                            <p>0 $</p><% } %>
+                        
                     </div>
                     
                     <div>
                         <!-- Button trigger modal -->
                         <h4 type="button" data-toggle="modal" data-target="#restaurantsModal">
-                            Restaurants
+                            <div class="cards-list">
+                            
+                                <div class="card 1">
+                                    <div class="card_image"> <img src="https://img.freepik.com/vector-gratis/cuchara-dibujos-animados-tenedor-cuchillo-cocina-diseno_24877-57345.jpg" /> </div>
+                                    <div class="card_title title-white">
+                                        <p>Restaurants</p>
+                                        <% if(data.transport){ %>
+                                            <p>
+                                                <%= data.restaurants %> $
+                                            </p>
+                                            <% }else{ %>
+                                                <p>0 $</p>
+                                                <% } %>
+                                    </div>
+                                </div>
+                            </div>
                         </h4>
                     
                         <!-- Modal RESTAURANT -->
@@ -121,21 +152,29 @@
                             </div>
                         </div>
                         <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                        <% if(data.transport){ %>
-                            <p>
-                                <%= data.restaurants %> $
-                            </p>
-                            <% }else{ %>
-                                <p>0 $</p>
-                                <% } %>
-                        
+                       
                         
                     </div>
                     
                 <div>
                     <!-- Button trigger modal -->
                     <h4 type="button" data-toggle="modal" data-target="#freetimeModal">
-                        Freetime
+                    <div class="cards-list">
+                    
+                        <div class="card 1">
+                            <div class="card_image"> <img src="https://ak.picdn.net/shutterstock/videos/26404112/thumb/1.jpg?ip=x480" /> </div>
+                            <div class="card_title title-white">
+                                <p>Freetime</p>
+                                <% if(data.transport){ %>
+                                    <p>
+                                        <%= data.freetime %> $
+                                    </p>
+                                    <% }else{ %>
+                                        <p>0 $</p>
+                                        <% } %>
+                            </div>
+                        </div>
+                    </div>
                     </h4>
                 
                     <!-- Modal FREETIME -->
@@ -170,19 +209,28 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    <% if(data.transport){ %>
-                        <p>
-                            <%= data.freetime %> $
-                        </p>
-                        <% }else{ %>
-                            <p>0 $</p>
-                            <% } %>
+                    
                 </div>
 
                 <div>
                     <!-- Button trigger modal -->
                     <h4 type="button" data-toggle="modal" data-target="#groceriesModal">
-                        Groceries
+                        <div class="cards-list">
+                        
+                            <div class="card 1">
+                                <div class="card_image"> <img src="https://st2.depositphotos.com/7752738/11625/v/600/depositphotos_116250234-stock-illustration-grocery-bag-vector-illustration-isolated.jpg" /> </div>
+                                <div class="card_title title-white">
+                                    <p>Groceries</p>
+                                    <% if(data.transport){ %>
+                                        <p>
+                                            <%= data.groceries %> $
+                                        </p>
+                                        <% }else{ %>
+                                            <p>0 $</p>
+                                            <% } %>
+                                </div>
+                            </div>
+                        </div>
                     </h4>
                 
                     <!-- Modal GROCERIES -->
@@ -217,20 +265,29 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    <% if(data.transport){ %>
-                        <p>
-                            <%= data.groceries %> $
-                        </p>
-                        <% }else{ %>
-                            <p>0 $</p>
-                            <% } %>
+                    
                 </div>
                     
 
                 <div>
                     <!-- Button trigger modal -->
                     <h4 type="button" data-toggle="modal" data-target="#healthModal">
-                        Health
+                        <div class="cards-list">
+                        
+                            <div class="card 1">
+                                <div class="card_image"> <img src="https://media.istockphoto.com/id/1224289744/video/online-health-technology-with-doctors-staff-animation.jpg?s=640x640&k=20&c=FEcJqlDtAgtuGfl2KExK81o-iRR_rxl2nF7AauUZf5g=" /> </div>
+                                <div class="card_title title-white">
+                                    <p>Health</p>
+                                    <% if(data.transport){ %>
+                                        <p>
+                                            <%= data.health %> $
+                                        </p>
+                                        <% }else{ %>
+                                            <p>0 $</p>
+                                            <% } %>
+                                </div>
+                            </div>
+                        </div>
                     </h4>
                 
                     <!-- Modal Health -->
@@ -265,19 +322,28 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                <% if(data.transport){ %>
-                    <p>
-                        <%= data.health %> $
-                    </p>
-                    <% }else{ %>
-                        <p>0 $</p>
-                        <% } %>
+               
                 </div>
 
                 <div>
                     <!-- Button trigger modal -->
                     <h4 type="button" data-toggle="modal" data-target="#petModal">
-                        Pet
+                        <div class="cards-list">
+                        
+                            <div class="card 1">
+                                <div class="card_image"> <img src="https://us.123rf.com/450wm/sn333g/sn333g1802/sn333g180200135/95329952-coraz%C3%B3n-creativo-con-la-pata-de-gato-imprime-ilustraci%C3%B3n-vector-huellas-de-perro-en-forma-de-coraz%C3%B3n.jpg" /> </div>
+                                <div class="card_title title-white">
+                                    <p>Pet</p>
+                                    <% if(data.transport){ %>
+                                        <p>
+                                            <%= data.pet %> $
+                                        </p>
+                                        <% }else{ %>
+                                            <p>0 $</p>
+                                            <% } %>
+                                </div>
+                            </div>
+                        </div>
                     </h4>
                 
                     <!-- Modal PET -->
@@ -287,7 +353,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Pet</h5>
-                                    <img class="iconomodal" src="resources/img/pet.svg">
+                                    <img class="iconomodal" src="https://us.123rf.com/450wm/sn333g/sn333g1802/sn333g180200135/95329952-coraz%C3%B3n-creativo-con-la-pata-de-gato-imprime-ilustraci%C3%B3n-vector-huellas-de-perro-en-forma-de-coraz%C3%B3n.jpg">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -311,19 +377,28 @@
                             </div>
                         </div>
                     </div>
-                    <% if(data.transport){ %>
-                        <p>
-                            <%= data.pet %> $
-                        </p>
-                        <% }else{ %>
-                            <p>0 $</p>
-                            <% } %>
+                   
                 </div>
 
                 <div>
                     <!-- Button trigger modal -->
                     <h4 type="button" data-toggle="modal" data-target="#bankModal">
-                        Bank
+                        <div class="cards-list">
+                        
+                            <div class="card 1">
+                                <div class="card_image"> <img src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-62233,msid-63838946/bank-agencies.jpg" /> </div>
+                                <div class="card_title title-white">
+                                    <p>Bank</p>
+                                    <% if(data.bank){ %>
+                                        <p>
+                                            <%= data.bank %> $
+                                        </p>
+                                        <% }else{ %>
+                                            <p>0 $</p>
+                                            <% } %>
+                                </div>
+                            </div>
+                        </div>
                     </h4>
                 
                     <!-- Modal BANK -->
@@ -358,19 +433,28 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    <% if(data.transport){ %>
-                        <p>
-                            <%= data.bank %> $
-                        </p>
-                        <% }else{ %>
-                            <p>0 $</p>
-                            <% } %>
+                  
                 </div>
                 
                 <div>
                     <!-- Button trigger modal -->
                     <h4 type="button" data-toggle="modal" data-target="#giftModal">
-                        Gift
+                        <div class="cards-list">
+                        
+                            <div class="card 1">
+                                <div class="card_image"> <img src="https://p0.piqsels.com/preview/338/548/851/gift-box-christmas-present-thumbnail.jpg" /> </div>
+                                <div class="card_title title-white">
+                                    <p>Gift</p>
+                                    <% if(data.transport){ %>
+                                        <p>
+                                            <%= data.gift %> $
+                                        </p>
+                                        <% }else{ %>
+                                            <p>0 $</p>
+                                            <% } %>
+                                </div>
+                            </div>
+                        </div>
                     </h4>
                 
                     <!-- Modal GIFT -->
@@ -405,20 +489,29 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                <% if(data.transport){ %>
-                    <p>
-                        <%= data.gift %> $
-                    </p>
-                    <% }else{ %>
-                        <p>0 $</p>
-                        <% } %>
+                
                 </div>
 
                     
                 <div>
                     <!-- Button trigger modal -->
                     <h4 type="button" data-toggle="modal" data-target="#homeModal">
-                        Home
+                        <div class="cards-list">
+                        
+                            <div class="card 1">
+                                <div class="card_image"> <img src="https://img.freepik.com/vector-premium/casa-dibujos-animados_11460-1609.jpg" /> </div>
+                                <div class="card_title title-white">
+                                    <p>Home</p>
+                                    <% if(data.transport){ %>
+                                        <p>
+                                            <%= data.home %> $
+                                        </p>
+                                        <% }else{ %>
+                                            <p>0 $</p>
+                                            <% } %>
+                                </div>
+                            </div>
+                        </div>
                     </h4>
                 
                     <!-- Modal HOME -->
@@ -453,19 +546,28 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    <% if(data.transport){ %>
-                        <p>
-                            <%= data.home %> $
-                        </p>
-                        <% }else{ %>
-                            <p>0 $</p>
-                            <% } %>
+                    
                 </div>
 
                 <div>
                     <!-- Button trigger modal -->
                     <h4 type="button" data-toggle="modal" data-target="#familyModal">
-                        Family
+                        <div class="cards-list">
+                        
+                            <div class="card 1">
+                                <div class="card_image"> <img src="https://static.vecteezy.com/system/resources/previews/000/142/287/non_2x/familia-cartoon-free-vector.jpg" /> </div>
+                                <div class="card_title title-white">
+                                    <p>Family</p>
+                                    <% if(data.transport){ %>
+                                        <p>
+                                            <%= data.family %> $
+                                        </p>
+                                        <% }else{ %>
+                                            <p>0 $</p>
+                                            <% } %>
+                                </div>
+                            </div>
+                        </div>
                     </h4>
                 
                     <!-- Modal HOME -->
@@ -500,20 +602,30 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    <% if(data.transport){ %>
-                        <p>
-                            <%= data.family %> $
-                        </p>
-                        <% }else{ %>
-                            <p>0 $</p>
-                            <% } %>
+                    
                 </div>
                     
                 
                 <div>
                     <!-- Button trigger modal -->
                     <h4 type="button" data-toggle="modal" data-target="#othersModal">
-                        Others
+                        <div class="cards-list">
+                        
+                            <div class="card 1">
+                                <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+                                <div class="card_title title-white">
+                                    <p>Others</p>
+                                    <% if(data.transport){ %>
+                                        <p>
+                                            <%= data.others %> $
+                                        </p>
+                                        <% }else{ %>
+                                            <p>0 $</p>
+                                            <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </h4>
                 
                     <!-- Modal OTHERS -->
@@ -548,14 +660,7 @@
                         </div>
                     </div>
                     <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    <% if(data.transport){ %>
-                        <p>
-                            <%= data.others %> $
-                        </p>
-                        <% }else{ %>
-                            <p>0 $</p>
-                            <% } %>
-                </div>
+                   
                    
                     
 
@@ -584,6 +689,8 @@
             <a class="nav-link " href="#">Resumen</a>
         </li>
     </ul></nav>
+
+    
 
 </body>
 </html>
