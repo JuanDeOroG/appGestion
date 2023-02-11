@@ -9,6 +9,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="resources/css/index.css">
     <link rel="stylesheet" href="resources/css/categoria.css">
+    <link rel="stylesheet" href="resources/css/modals.css">
+
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,8 +48,8 @@
                             <div class="cards-list">
                             
                                 <div class="card 1">
-                                    <div class="card_image"> <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/398d2ed9-abe9-4fc8-a5c8-9ab48e85e0fe/dam96et-b2a958bd-0a13-472a-974f-25882ee3b3c4.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM5OGQyZWQ5LWFiZTktNGZjOC1hNWM4LTlhYjQ4ZTg1ZTBmZVwvZGFtOTZldC1iMmE5NThiZC0wYTEzLTQ3MmEtOTc0Zi0yNTg4MmVlM2IzYzQuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.SGheXHUbV88sDuTuo1DB-JB1n60I92a30B41pR72gzk" /> </div>
-                                    <div class="card_title title-white">
+                                    <div class="card_image"> <img src="/resources/img/categorias/transport.jpg">
+                                        <div class="card_title title-white">
                                         <p>Transport</p>
                                         <% if(data.transport){ %>
                                             <p>
@@ -81,9 +83,15 @@
                                                 <option value="Cash">Cash</option>
                                             </select>
                                         </div>
-
-                                        <label for="">Expense:</label>
-                                        <input type="number" name="" id="" placeholder="3500">$
+                                    
+                                        <div>
+                                            <label for="">Expense:</label>
+                                            <input type="number" name="" id="" placeholder="3500">$
+                                        </div>
+                                        <div>
+                                            <label for="">Notes:</label><br>
+                                            <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -102,8 +110,8 @@
                             <div class="cards-list">
                             
                                 <div class="card 1">
-                                    <div class="card_image"> <img src="https://img.freepik.com/vector-gratis/cuchara-dibujos-animados-tenedor-cuchillo-cocina-diseno_24877-57345.jpg" /> </div>
-                                    <div class="card_title title-white">
+                                    <div class="card_image"> <img src="resources/img/categorias/restaurant.jpg">
+                                        <div class="card_title title-white">
                                         <p>Restaurants</p>
                                         <% if(data.transport){ %>
                                             <p>
@@ -137,12 +145,16 @@
                                                 <option value="method">Card</option>
                                                 <option value="Cash">Cash</option>
                                             </select>
-                                            
-                    
                                         </div>
-                    
-                                        <label for="">Expense:</label>
-                                        <input type="number" name="" id="" placeholder="3500">$
+                                    
+                                        <div>
+                                            <label for="">Expense:</label>
+                                            <input type="number" name="" id="" placeholder="3500">$
+                                        </div>
+                                        <div>
+                                            <label for="">Notes:</label><br>
+                                            <textarea name="" id="" cols="35" rows="3" placeholder=" ..."></textarea>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -162,7 +174,7 @@
                     <div class="cards-list">
                     
                         <div class="card 1">
-                            <div class="card_image"> <img src="https://ak.picdn.net/shutterstock/videos/26404112/thumb/1.jpg?ip=x480" /> </div>
+                            <div class="card_image"> <img src="resources/img/categorias/freetime.jpg" /> </div>
                             <div class="card_title title-white">
                                 <p>Freetime</p>
                                 <% if(data.transport){ %>
@@ -197,9 +209,15 @@
                                             <option value="Cash">Cash</option>
                                         </select>
                                     </div>
-                
-                                    <label for="">Expense:</label>
-                                    <input type="number" name="" id="" placeholder="3500">$
+                                
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="" id="" placeholder="3500">$
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="" id="" cols="35" rows="3" placeholder=" ..."></textarea>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -218,7 +236,7 @@
                         <div class="cards-list">
                         
                             <div class="card 1">
-                                <div class="card_image"> <img src="https://st2.depositphotos.com/7752738/11625/v/600/depositphotos_116250234-stock-illustration-grocery-bag-vector-illustration-isolated.jpg" /> </div>
+                                <div class="card_image"> <img src="resources/img/categorias/groceries.jpg" /> </div>
                                 <div class="card_title title-white">
                                     <p>Groceries</p>
                                     <% if(data.transport){ %>
@@ -253,9 +271,15 @@
                                             <option value="Cash">Cash</option>
                                         </select>
                                     </div>
-                
-                                    <label for="">Expense:</label>
-                                    <input type="number" name="" id="" placeholder="3500">$
+                                
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="" id="" placeholder="3500">$
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="" id="" cols="35" rows="3" placeholder=" ..."></textarea>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -275,7 +299,7 @@
                         <div class="cards-list">
                         
                             <div class="card 1">
-                                <div class="card_image"> <img src="https://media.istockphoto.com/id/1224289744/video/online-health-technology-with-doctors-staff-animation.jpg?s=640x640&k=20&c=FEcJqlDtAgtuGfl2KExK81o-iRR_rxl2nF7AauUZf5g=" /> </div>
+                                <div class="card_image"> <img src="resources/img/categorias/health.jpg" /> </div>
                                 <div class="card_title title-white">
                                     <p>Health</p>
                                     <% if(data.transport){ %>
@@ -310,9 +334,15 @@
                                             <option value="Cash">Cash</option>
                                         </select>
                                     </div>
-                
-                                    <label for="">Expense:</label>
-                                    <input type="number" name="" id="" placeholder="3500">$
+                                
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="" id="" placeholder="3500">$
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="" id="" cols="35" rows="3" placeholder=" ..."></textarea>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -331,7 +361,7 @@
                         <div class="cards-list">
                         
                             <div class="card 1">
-                                <div class="card_image"> <img src="https://us.123rf.com/450wm/sn333g/sn333g1802/sn333g180200135/95329952-coraz%C3%B3n-creativo-con-la-pata-de-gato-imprime-ilustraci%C3%B3n-vector-huellas-de-perro-en-forma-de-coraz%C3%B3n.jpg" /> </div>
+                                <div class="card_image"> <img src="resources/img/categorias/pet.webp" /> </div>
                                 <div class="card_title title-white">
                                     <p>Pet</p>
                                     <% if(data.transport){ %>
@@ -366,9 +396,15 @@
                                             <option value="Cash">Cash</option>
                                         </select>
                                     </div>
-                
-                                    <label for="">Expense:</label>
-                                    <input type="number" name="" id="" placeholder="3500">$
+                                
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="" id="" placeholder="3500">$
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="" id="" cols="35" rows="3" placeholder=" ..."></textarea>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -386,7 +422,7 @@
                         <div class="cards-list">
                         
                             <div class="card 1">
-                                <div class="card_image"> <img src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-62233,msid-63838946/bank-agencies.jpg" /> </div>
+                                <div class="card_image"> <img src="resources/img/categorias/bank.jpg" /> </div>
                                 <div class="card_title title-white">
                                     <p>Bank</p>
                                     <% if(data.bank){ %>
@@ -421,9 +457,15 @@
                                             <option value="Cash">Cash</option>
                                         </select>
                                     </div>
-                
-                                    <label for="">Expense:</label>
-                                    <input type="number" name="" id="" placeholder="3500">$
+                                
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="" id="" placeholder="3500">$
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="" id="" cols="35" rows="3" placeholder=" ..."></textarea>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -442,7 +484,7 @@
                         <div class="cards-list">
                         
                             <div class="card 1">
-                                <div class="card_image"> <img src="https://p0.piqsels.com/preview/338/548/851/gift-box-christmas-present-thumbnail.jpg" /> </div>
+                                <div class="card_image"> <img src="resources/img/categorias/gift.jpg" /> </div>
                                 <div class="card_title title-white">
                                     <p>Gift</p>
                                     <% if(data.transport){ %>
@@ -477,9 +519,15 @@
                                             <option value="Cash">Cash</option>
                                         </select>
                                     </div>
-                
-                                    <label for="">Expense:</label>
-                                    <input type="number" name="" id="" placeholder="3500">$
+                                
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="" id="" placeholder="3500">$
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="" id="" cols="35" rows="3" placeholder=" ..."></textarea>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -499,7 +547,7 @@
                         <div class="cards-list">
                         
                             <div class="card 1">
-                                <div class="card_image"> <img src="https://img.freepik.com/vector-premium/casa-dibujos-animados_11460-1609.jpg" /> </div>
+                                <div class="card_image"> <img src="resources/img/categorias/home.jpg" /> </div>
                                 <div class="card_title title-white">
                                     <p>Home</p>
                                     <% if(data.transport){ %>
@@ -534,9 +582,15 @@
                                             <option value="Cash">Cash</option>
                                         </select>
                                     </div>
-                
-                                    <label for="">Expense:</label>
-                                    <input type="number" name="" id="" placeholder="3500">$
+                                
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="" id="" placeholder="3500">$
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="" id="" cols="35" rows="3" placeholder=" ..."></textarea>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -555,7 +609,7 @@
                         <div class="cards-list">
                         
                             <div class="card 1">
-                                <div class="card_image"> <img src="https://static.vecteezy.com/system/resources/previews/000/142/287/non_2x/familia-cartoon-free-vector.jpg" /> </div>
+                                <div class="card_image"> <img src="resources/img/categorias/family.jpg" /> </div>
                                 <div class="card_title title-white">
                                     <p>Family</p>
                                     <% if(data.transport){ %>
@@ -590,9 +644,15 @@
                                             <option value="Cash">Cash</option>
                                         </select>
                                     </div>
-                
-                                    <label for="">Expense:</label>
-                                    <input type="number" name="" id="" placeholder="3500">$
+                                
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="" id="" placeholder="3500">$
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="" id="" cols="35" rows="3" placeholder=" ..."></textarea>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -612,7 +672,7 @@
                         <div class="cards-list">
                         
                             <div class="card 1">
-                                <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+                                <div class="card_image"> <img src="resources/img/categorias/others.jpg" /> </div>
                                 <div class="card_title title-white">
                                     <p>Others</p>
                                     <% if(data.transport){ %>
@@ -648,9 +708,15 @@
                                             <option value="Cash">Cash</option>
                                         </select>
                                     </div>
-                
-                                    <label for="">Expense:</label>
-                                    <input type="number" name="" id="" placeholder="3500">$
+                                
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="" id="" placeholder="3500">$
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="" id="" cols="35" rows="3" placeholder=" ..."></textarea>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

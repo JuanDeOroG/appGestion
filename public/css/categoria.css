@@ -6,24 +6,8 @@
     padding-bottom: 15px;
 }
 
-.imagensvg{
-    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
-    width: 10%;
-    height: 10%;
-    padding: 20px;
-    background-color: aqua;
-    
-}
-.iconomodal{
-    width: 100px;
-    height: 100px;
-    margin-left: 60%;
-    position: relative;;
-    float: right;
-    border: 0.5 solid rgba(0, 0, 255, 0);
-    border-radius: 50%;
 
-}
+
 
 h4{
     text-transform:capitalize;
@@ -45,7 +29,7 @@ h4{
 }
 
 .card {
-    margin: 0px auto;
+    margin: 3px auto;
     width: 200px;
     height: 160px;
     font-weight: 700;

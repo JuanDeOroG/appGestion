@@ -48,7 +48,7 @@ const connection = require("./database/db")
         connection.query( `SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others FROM categorias WHERE fechagasto="${fecha_actual}"`,(error,rows,fields)=>{
             if (error) {console.log("Error: ",error)
             } else if (rows.length == 0) { // En el caso de que no se encuentren resultados en tal fecha
-                console.log("No se encontraron", rows)
+                console.log("En la fecha actual, aún no se registran gastos", rows)
                 
 
                 res.render("categorias", { fecha_actual, data: "undefined" })
