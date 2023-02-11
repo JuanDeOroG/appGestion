@@ -19,23 +19,22 @@
 </head>
 <body>
     <header class="header">
-    <h3 class="alltitle">TODAS LAS CUENTAS</h3>
+    <h3 class="alltitle">Categories</h3>
 
 
     </header>
-            <h4 class="countstitle">CUENTAS</h4>
 
     <div class="container">
         
 
         <% if(data=="undefined"){%>
             
-            <form id="formEnviar" action="/categorias" method="post">
-                <label for="fecha_actual">Today</label>
-                <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
+            <form id="formEnviar" class="calendario" action="/categorias" method="post">
+                <label for="fecha_actual">Today:</label>
+                <input type="date" name="fecha_actual" id="fecha_actual" value=" <%= fecha_actual %>">
             </form>
             <% }else{ %>
-                <form id="formEnviar" action="/categorias" method="post">
+                <form id="formEnviar" class="calendario" action="/categorias" method="post">
                     <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
                 </form><% } %>
         
