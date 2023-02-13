@@ -1,6 +1,6 @@
 .modal-content{
-    border: 2px solid black;
-    border-radius: 21px;
+    border: 3px solid rgb(138, 43, 226);
+    border-radius: 16px;
     width: 100%;
     margin-top: 10%;
     height: 80vh;
@@ -8,12 +8,13 @@
 }
 .modal-header{
     background: rgb(138, 43, 226);
-        border-radius: 20px;
+        border-radius: 13px;
+        padding: 10px;
 }
 
 .modal-footer{
     background: rgb(138, 43, 226);
-    border-radius: 20px;
+    border-radius: 13px;
 }
 
 .modal-header h5{
@@ -22,7 +23,7 @@
 }
 
 .iconomodal {
-    width: 100px;
+    width: 120px;
     height: 100px;
     margin-left: 20%;
     position: relative;
@@ -30,7 +31,7 @@
     float: left;
     border: 0.5 solid rgba(0, 0, 255, 0);
     border-radius: 50%;
-    margin: 0 20px 0 20px;
+    margin: 0 0px 0 0px;
     padding: 0;
 
 }
@@ -54,4 +55,8 @@
 .btn-primary:hover {
     background-color: rgb(143, 23, 255);
         border-color: rgb(145, 28, 255);
+}
+
+.modal-title{
+    margin-left: 35%;
 }

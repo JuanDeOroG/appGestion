@@ -44,14 +44,15 @@ const connection = require("./database/db")
 
         // Adquirimos la fecha actual para ponerla como fecha inicial en la app
         let fecha_actual = moment().format('YYYY-MM-DD')
-        
+        console.log(fecha_actual)
         connection.query( `SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others FROM categorias WHERE fechagasto="${fecha_actual}"`,(error,rows,fields)=>{
             if (error) {console.log("Error: ",error)
             } else if (rows.length == 0) { // En el caso de que no se encuentren resultados en tal fecha
                 console.log("En la fecha actual, aún no se registran gastos", rows)
                 
+                
 
-                res.render("categorias", { fecha_actual, data: "undefined" })
+                res.render("categorias", {fecha_actual, data: "undefined" })
 
             } else { // EN EL CASO DE QUE SÍ SE ENCUENTREN RESULTADOS
                 let transport=0;
@@ -67,6 +68,16 @@ const connection = require("./database/db")
                 let others = 0;
                 for (let x of rows) {
                     transport=transport + x.transport
+                    restaurants += x.restaurants
+                    freetime += x.freetime
+                    groceries += x.groceries
+                    health += x.health
+                    pet += x.pet
+                    bank += x.bank
+                    gift += x.gift
+                    home += x.home
+                    family += x.family
+                    others += x.others
                 }
                 // console.log("transport es igual a: ",transport)
 
@@ -77,8 +88,7 @@ const connection = require("./database/db")
 
     })
 
-app.post("/categorias", (req, res) => {
-
+app.post("/categorias", async(req, res) => {
     // Adquirimos la fecha actual para ponerla como fecha inicial en la app
     let fechaElegida= req.body.fecha_actual
 
@@ -92,6 +102,7 @@ app.post("/categorias", (req, res) => {
             res.render("categorias", { fecha_actual:fechaElegida, data: "undefined" })
 
         } else {
+            console.log("Sí se encontraron resultados (Post categorias)")
             let transport = 0;
             let restaurants = 0;
             let freetime = 0;
@@ -127,6 +138,71 @@ app.post("/categorias", (req, res) => {
 
 
 })
+
+
+app.post("/add",async (req, res) => {
+
+    let cuenta = req.body.method
+    let expense = req.body.expense
+    let category = req.body.inputcategory
+    let notes = req.body.notes
+    let fechaElegida = req.body.inputfecha
+    connection.query(`INSERT into categorias (fechagasto,cuentas,${category}) VALUES("${fechaElegida}","${cuenta}", ${expense});`,function (error) {
+        if (error) {
+            console.log(error)
+            
+        }
+        
+    })
+
+    connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others FROM categorias WHERE fechagasto="${fechaElegida}"`, (error, rows, fields) => {
+        if (error) {
+            console.log("Error: ", error)
+        } else if (rows.length == 0) {
+            console.log("No se encontraron", rows)
+            
+
+            res.render("categorias", { fecha_actual: fechaElegida, data: "undefined" })
+
+        } else {
+            console.log("Sí se encontraron resultados (Post add)")
+            let transport = 0;
+            let restaurants = 0;
+            let freetime = 0;
+            let groceries = 0;
+            let health = 0;
+            let pet = 0;
+            let bank = 0;
+            let gift = 0;
+            let home = 0;
+            let family = 0;
+            let others = 0;
+
+
+            for (let x of rows) {
+                transport = transport + x.transport
+                restaurants += x.restaurants
+                freetime += x.freetime
+                groceries += x.groceries
+                health += x.health
+                pet += x.pet
+                bank += x.bank
+                gift += x.gift
+                home += x.home
+                family += x.family
+                others += x.others
+
+
+            }
+
+            res.render("categorias", { fecha_actual: fechaElegida, data: { transport: transport, restaurants, freetime, groceries, health, pet, bank, gift, home, family, others } })
+        }
+    })
+
+    
+
+})
+
 
 app.listen(3000, (req,res)=>{
     console.log("Servidor al puerto 3000 de forma exitosa.")

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,110 +12,195 @@
     <link rel="stylesheet" href="resources/css/categoria.css">
     <link rel="stylesheet" href="resources/css/modals.css">
 
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&display=swap"
-                rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <header class="header">
-    <h3 class="alltitle">Categories</h3>
+        <h3 class="alltitle">Categories</h3>
 
 
     </header>
 
     <div class="container">
-        
 
-        <% if(data=="undefined"){%>
-            
+
+       
+
             <form id="formEnviar" class="calendario" action="/categorias" method="post">
-                <label for="fecha_actual">Today:</label>
-                <input type="date" name="fecha_actual" id="fecha_actual" value=" <%= fecha_actual %>">
+                <label for="fecha_actual">Calendary: </label>
+                <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
             </form>
-            <% }else{ %>
-                <form id="formEnviar" class="calendario" action="/categorias" method="post">
-                    <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
-                </form><% } %>
-        
-    
-            <div class="categorias">
             
-                    <div>
-                        <!-- Button trigger modal -->
-                        <h4 type="button" data-toggle="modal" data-target="#exampleModal">
-                            <div class="cards-list">
-                            
-                                <div class="card 1">
-                                    <div class="card_image"> <img src="/resources/img/categorias/transport.jpg">
-                                        <div class="card_title title-white">
-                                        <p>Transport</p>
-                                        <% if(data.transport){ %>
-                                            <p>
-                                                <%= data.transport %> $
-                                            </p>
-                                            <% }else{ %>
-                                                <p>0 $</p>
-                                                <% } %>
+
+                    <div class="categorias">
+
+                        <div>
+                            <!-- Button trigger modal -->
+                            <h4 type="button" data-toggle="modal" data-target="#exampleModal">
+                                <div class="cards-list">
+
+                                    <div class="card 1">
+                                        <div class="card_image"> <img src="/resources/img/categorias/transport.jpg">
+                                            <div class="card_title title-white">
+                                                <p>Transport</p>
+                                                <% if(data.transport){ %>
+                                                    <p>
+                                                        <%= data.transport %> $
+                                                    </p>
+                                                    <% }else{ %>
+                                                        <p>0 $</p>
+                                                        <% } %>
+                                            </div>
+                                        </div>
                                     </div>
+                            </h4>
+
+                            <!-- Modal TRANSPORT -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+
+                                    <form id="formadd" action="/add" method="post">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                                    Transport</h5>
+
+
+
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div>
+                                                    <label for="method">Payment method:</label>
+                                                    <select name="method" id="method">
+                                                        <option value="Card">Card</option>
+                                                        <option value="Cash">Cash</option>
+                                                    </select>
+                                                </div>
+
+                                                <div>
+                                                    <label for="">Expense:</label>
+                                                    <input type="number" name="expense" id="" placeholder="3500">$
+                                                    <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                                    <input type="text" class="inputcategory" name="inputcategory"
+                                                        value="Transport">
+                                                    <input type="text" class="inputfecha" id="inputfecha"
+                                                        name="inputfecha">
+                                                </div>
+                                                <div>
+                                                    <label for="">Notes:</label><br>
+                                                    <textarea name="notes" id="" cols="35" rows="2"
+                                                        placeholder=" ..."></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" id="save" class="btn btn-primary">Save
+                                                    changes</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                        </h4>
-                        
-                        <!-- Modal TRANSPORT -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Transport</h5>
-                                        <img class="iconomodal" src="resources/img/transport.svg" alt="transport">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div>
-                                            <label for="method">Payment method:</label>
-                                            <select name="method" id="method">
-                                                <option value="method">Card</option>
-                                                <option value="Cash">Cash</option>
-                                            </select>
-                                        </div>
-                                    
-                                        <div>
-                                            <label for="">Expense:</label>
-                                            <input type="number" name="" id="" placeholder="3500">$
-                                        </div>
-                                        <div>
-                                            <label for="">Notes:</label><br>
-                                            <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+
                         </div>
-                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                        
-                    </div>
-                    
+
                     <div>
                         <!-- Button trigger modal -->
                         <h4 type="button" data-toggle="modal" data-target="#restaurantsModal">
                             <div class="cards-list">
-                            
+                    
                                 <div class="card 1">
                                     <div class="card_image"> <img src="resources/img/categorias/restaurant.jpg">
                                         <div class="card_title title-white">
-                                        <p>Restaurants</p>
-                                        <% if(data.transport){ %>
+                                            <p>Restaurants</p>
+                                            <% if(data.restaurants){ %>
+                                                <p>
+                                                    <%= data.restaurants %> $
+                                                </p>
+                                                <% }else{ %>
+                                                    <p>0 $</p>
+                                                    <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                        </h4>
+                    
+                        <!-- Modal RESTAURANT -->
+                        <div class="modal fade" id="restaurantsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <form id="formadd2" action="/add" method="post">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                                Restaurants</h5>
+                    
+                    
+                    
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <label for="method">Payment method:</label>
+                                                <select name="method" id="method">
+                                                    <option value="Card">Card</option>
+                                                    <option value="Cash">Cash</option>
+                                                </select>
+                                            </div>
+                    
+                                            <div>
+                                                <label for="">Expense:</label>
+                                                <input type="number" name="expense" id="" placeholder="3500">$
+                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                                <input type="text" class="inputcategory" name="inputcategory" value="restaurants">
+                                                <input type="text" class="inputfecha" id="inputfecha2" name="inputfecha">
+                                            </div>
+                                            <div>
+                                                <label for="">Notes:</label><br>
+                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" id="save2" class="btn btn-primary">Save
+                                                changes</button>
+                                        </div>
+                                    </div>
+                                </form>
+                    
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    
+                    <div>
+                        <!-- Button trigger modal FREETIME -->
+                        <h4 type="button" data-toggle="modal" data-target="#freetimeModal">
+                            <div class="cards-list">
+                    
+                                <div class="card 1">
+                                    <div class="card_image"> <img src="resources/img/categorias/freetime.jpg" />
+                                    </div>
+                                    <div class="card_title title-white">
+                                        <p>Freetime</p>
+                                        <% if(data.freetime){ %>
                                             <p>
-                                                <%= data.restaurants %> $
+                                                <%= data.freetime %> $
                                             </p>
                                             <% }else{ %>
                                                 <p>0 $</p>
@@ -124,15 +210,373 @@
                             </div>
                         </h4>
                     
-                        <!-- Modal RESTAURANT -->
-                        <div class="modal fade" id="restaurantsModal" tabindex="-1" role="dialog" aria-labelledby="restaurantsModal"
+                        <!-- Modal FREETIME  3-->
+                        <div class="modal fade" id="freetimeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <form id="formadd3" action="/add" method="post">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                                Freetime</h5>
+                    
+                    
+                    
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <label for="method">Payment method:</label>
+                                                <select name="method" id="method">
+                                                    <option value="Card">Card</option>
+                                                    <option value="Cash">Cash</option>
+                                                </select>
+                                            </div>
+                    
+                                            <div>
+                                                <label for="">Expense:</label>
+                                                <input type="number" name="expense" id="" placeholder="3500">$
+                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                                <input type="text" class="inputcategory" name="inputcategory" value="freetime">
+                                                <input type="text" class="inputfecha" id="inputfecha3" name="inputfecha">
+                                            </div>
+                                            <div>
+                                                <label for="">Notes:</label><br>
+                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" id="save3" class="btn btn-primary">Save
+                                                changes</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    
+                    </div>
+                    
+                    
+                    
+                    
+                    <div>
+                        <!-- Button GROCERIES modal -->
+                        <h4 type="button" data-toggle="modal" data-target="#groceriesModal">
+                            <div class="cards-list">
+                    
+                                <div class="card 1">
+                                    <div class="card_image"> <img src="resources/img/categorias/groceries.jpg" />
+                                    </div>
+                                    <div class="card_title title-white">
+                                        <p>Groceries</p>
+                                        <% if(data.groceries){ %>
+                                            <p>
+                                                <%= data.groceries %> $
+                                            </p>
+                                            <% }else{ %>
+                                                <p>0 $</p>
+                                                <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </h4>
+                    
+                        <!-- Modal GROCERIES 4 -->
+                        <div class="modal fade" id="groceriesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <form id="formadd4" action="/add" method="post">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                                Groceries</h5>
+                    
+                    
+                    
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <label for="method">Payment method:</label>
+                                                <select name="method" id="method">
+                                                    <option value="Card">Card</option>
+                                                    <option value="Cash">Cash</option>
+                                                </select>
+                                            </div>
+                    
+                                            <div>
+                                                <label for="">Expense:</label>
+                                                <input type="number" name="expense" id="" placeholder="3500">$
+                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                                <input type="text" class="inputcategory" name="inputcategory" value="groceries">
+                                                <input type="text" class="inputfecha" id="inputfecha4" name="inputfecha">
+                                            </div>
+                                            <div>
+                                                <label for="">Notes:</label><br>
+                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" id="save4" class="btn btn-primary">Save
+                                                changes</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    
+                    </div>
+                    
+                    
+                    <div>
+                        <!-- Button  modal HEALTH -->
+                        <h4 type="button" data-toggle="modal" data-target="#healthModal">
+                            <div class="cards-list">
+                    
+                                <div class="card 1">
+                                    <div class="card_image"> <img src="resources/img/categorias/health.jpg" />
+                                    </div>
+                                    <div class="card_title title-white">
+                                        <p>Health</p>
+                                        <% if(data.health){ %>
+                                            <p>
+                                                <%= data.health %> $
+                                            </p>
+                                            <% }else{ %>
+                                                <p>0 $</p>
+                                                <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </h4>
+                    
+                        <!-- Modal Health 5-->
+                        <div class="modal fade" id="healthModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <form id="formadd5" action="/add" method="post">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                                Health</h5>
+                    
+                    
+                    
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <label for="method">Payment method:</label>
+                                                <select name="method" id="method">
+                                                    <option value="Card">Card</option>
+                                                    <option value="Cash">Cash</option>
+                                                </select>
+                                            </div>
+                    
+                                            <div>
+                                                <label for="">Expense:</label>
+                                                <input type="number" name="expense" id="" placeholder="3500">$
+                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                                <input type="text" class="inputcategory" name="inputcategory" value="health">
+                                                <input type="text" class="inputfecha" id="inputfecha5" name="inputfecha">
+                                            </div>
+                                            <div>
+                                                <label for="">Notes:</label><br>
+                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" id="save5" class="btn btn-primary">Save
+                                                changes</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    
+                    </div>
+                    
+                    <div>
+                        <!-- Button PET modal 6-->
+                        <h4 type="button" data-toggle="modal" data-target="#petModal">
+                            <div class="cards-list">
+                    
+                                <div class="card 1">
+                                    <div class="card_image"> <img src="resources/img/categorias/pet.webp" /> </div>
+                                    <div class="card_title title-white">
+                                        <p>Pet</p>
+                                        <% if(data.pet){ %>
+                                            <p>
+                                                <%= data.pet %> $
+                                            </p>
+                                            <% }else{ %>
+                                                <p>0 $</p>
+                                                <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </h4>
+                    
+                        <!-- Modal PET 6-->
+                        <div class="modal fade" id="petModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <form id="formadd6" action="/add" method="post">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                                Pet</h5>
+                    
+                    
+                    
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <label for="method">Payment method:</label>
+                                                <select name="method" id="method">
+                                                    <option value="Card">Card</option>
+                                                    <option value="Cash">Cash</option>
+                                                </select>
+                                            </div>
+                    
+                                            <div>
+                                                <label for="">Expense:</label>
+                                                <input type="number" name="expense" id="" placeholder="3500">$
+                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                                <input type="text" class="inputcategory" name="inputcategory" value="Pet">
+                                                <input type="text" class="inputfecha" id="inputfecha6" name="inputfecha">
+                                            </div>
+                                            <div>
+                                                <label for="">Notes:</label><br>
+                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" id="save6" class="btn btn-primary">Save
+                                                changes</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    
+                    <div>
+                        <!-- Button BANK modal 7 -->
+                        <h4 type="button" data-toggle="modal" data-target="#bankModal">
+                            <div class="cards-list">
+                    
+                                <div class="card 1">
+                                    <div class="card_image"> <img src="resources/img/categorias/bank.jpg" /> </div>
+                                    <div class="card_title title-white">
+                                        <p>Bank</p>
+                                        <% if(data.bank){ %>
+                                            <p>
+                                                <%= data.bank %> $
+                                            </p>
+                                            <% }else{ %>
+                                                <p>0 $</p>
+                                                <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </h4>
+                    
+                        <!-- Modal BANK 7 -->
+                        <div class="modal fade" id="bankModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <form id="formadd7" action="/add" method="post">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                                Bank</h5>
+                    
+                    
+                    
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <label for="method">Payment method:</label>
+                                                <select name="method" id="method">
+                                                    <option value="Card">Card</option>
+                                                    <option value="Cash">Cash</option>
+                                                </select>
+                                            </div>
+                    
+                                            <div>
+                                                <label for="">Expense:</label>
+                                                <input type="number" name="expense" id="" placeholder="3500">$
+                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                                <input type="text" class="inputcategory" name="inputcategory" value="bank">
+                                                <input type="text" class="inputfecha" id="inputfecha7" name="inputfecha">
+                                            </div>
+                                            <div>
+                                                <label for="">Notes:</label><br>
+                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" id="save7" class="btn btn-primary">Save
+                                                changes</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    
+                    </div>
+                    
+                    <div>
+                        <!-- Button trigger modal -->
+                        <h4 type="button" data-toggle="modal" data-target="#giftModal">
+                            <div class="cards-list">
+                    
+                                <div class="card 1">
+                                    <div class="card_image"> <img src="resources/img/categorias/gift.jpg" /> </div>
+                                    <div class="card_title title-white">
+                                        <p>Gift</p>
+                                        <% if(data.gift){ %>
+                                            <p>
+                                                <%= data.gift %> $
+                                            </p>
+                                            <% }else{ %>
+                                                <p>0 $</p>
+                                                <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </h4>
+                    
+                        <!-- Modal GIFT -->
+                        <div class="modal fade" id="giftModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Restaurants</h5>
-                                        <img class="iconomodal" src="resources/img/restaurants.svg" alt="transport">
-                    
+                                        <h5 class="modal-title" id="exampleModalLabel">Gift</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -145,7 +589,7 @@
                                                 <option value="Cash">Cash</option>
                                             </select>
                                         </div>
-                                    
+                    
                                         <div>
                                             <label for="">Expense:</label>
                                             <input type="number" name="" id="" placeholder="3500">$
@@ -163,604 +607,235 @@
                             </div>
                         </div>
                         <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                       
-                        
+                    
                     </div>
                     
-                <div>
-                    <!-- Button trigger modal -->
-                    <h4 type="button" data-toggle="modal" data-target="#freetimeModal">
-                    <div class="cards-list">
                     
-                        <div class="card 1">
-                            <div class="card_image"> <img src="resources/img/categorias/freetime.jpg" /> </div>
-                            <div class="card_title title-white">
-                                <p>Freetime</p>
-                                <% if(data.transport){ %>
-                                    <p>
-                                        <%= data.freetime %> $
-                                    </p>
-                                    <% }else{ %>
-                                        <p>0 $</p>
-                                        <% } %>
-                            </div>
-                        </div>
-                    </div>
-                    </h4>
-                
-                    <!-- Modal FREETIME -->
-                    <div class="modal fade" id="freetimeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Freetime</h5>
-                                    <img class="iconomodal" src="resources/img/freetime.svg" >
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        <label for="method">Payment method:</label>
-                                        <select name="method" id="method">
-                                            <option value="method">Card</option>
-                                            <option value="Cash">Cash</option>
-                                        </select>
+                    <div>
+                        <!-- Button trigger modal -->
+                        <h4 type="button" data-toggle="modal" data-target="#homeModal">
+                            <div class="cards-list">
+                    
+                                <div class="card 1">
+                                    <div class="card_image"> <img src="resources/img/categorias/home.jpg" /> </div>
+                                    <div class="card_title title-white">
+                                        <p>Home</p>
+                                        <% if(data.home){ %>
+                                            <p>
+                                                <%= data.home %> $
+                                            </p>
+                                            <% }else{ %>
+                                                <p>0 $</p>
+                                                <% } %>
                                     </div>
-                                
-                                    <div>
-                                        <label for="">Expense:</label>
-                                        <input type="number" name="" id="" placeholder="3500">$
-                                    </div>
-                                    <div>
-                                        <label for="">Notes:</label><br>
-                                        <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                        </h4>
                     
-                </div>
+                        <!-- Modal HOME -->
+                        <div class="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Home</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            <label for="method">Payment method:</label>
+                                            <select name="method" id="method">
+                                                <option value="method">Card</option>
+                                                <option value="Cash">Cash</option>
+                                            </select>
+                                        </div>
+                    
+                                        <div>
+                                            <label for="">Expense:</label>
+                                            <input type="number" name="" id="" placeholder="3500">$
+                                        </div>
+                                        <div>
+                                            <label for="">Notes:</label><br>
+                                            <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    
+                    </div>
+                    
+                    <div>
+                        <!-- Button trigger modal -->
+                        <h4 type="button" data-toggle="modal" data-target="#familyModal">
+                            <div class="cards-list">
+                    
+                                <div class="card 1">
+                                    <div class="card_image"> <img src="resources/img/categorias/family.jpg" />
+                                    </div>
+                                    <div class="card_title title-white">
+                                        <p>Family</p>
+                                        <% if(data.family){ %>
+                                            <p>
+                                                <%= data.family %> $
+                                            </p>
+                                            <% }else{ %>
+                                                <p>0 $</p>
+                                                <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </h4>
+                    
+                        <!-- Modal HOME -->
+                        <div class="modal fade" id="familyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Family</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            <label for="method">Payment method:</label>
+                                            <select name="method" id="method">
+                                                <option value="method">Card</option>
+                                                <option value="Cash">Cash</option>
+                                            </select>
+                                        </div>
+                    
+                                        <div>
+                                            <label for="">Expense:</label>
+                                            <input type="number" name="" id="" placeholder="3500">$
+                                        </div>
+                                        <div>
+                                            <label for="">Notes:</label><br>
+                                            <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    
+                    </div>
+                    
+                    
+                    <div>
+                        <!-- Button trigger modal -->
+                        <h4 type="button" data-toggle="modal" data-target="#othersModal">
+                            <div class="cards-list">
+                    
+                                <div class="card 1">
+                                    <div class="card_image"> <img src="resources/img/categorias/others.jpg" />
+                                    </div>
+                                    <div class="card_title title-white">
+                                        <p>Others</p>
+                                        <% if(data.others){ %>
+                                            <p>
+                                                <%= data.others %> $
+                                            </p>
+                                            <% }else{ %>
+                                                <p>0 $</p>
+                                                <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                        </h4>
+                    
+                        <!-- Modal OTHERS -->
+                        <div class="modal fade" id="othersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Others</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            <label for="method">Payment method:</label>
+                                            <select name="method" id="method">
+                                                <option value="method">Card</option>
+                                                <option value="Cash">Cash</option>
+                                            </select>
+                                        </div>
+                    
+                                        <div>
+                                            <label for="">Expense:</label>
+                                            <input type="number" name="" id="" placeholder="3500">$
+                                        </div>
+                                        <div>
+                                            <label for="">Notes:</label><br>
+                                            <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    </div>
 
-                <div>
-                    <!-- Button trigger modal -->
-                    <h4 type="button" data-toggle="modal" data-target="#groceriesModal">
-                        <div class="cards-list">
-                        
-                            <div class="card 1">
-                                <div class="card_image"> <img src="resources/img/categorias/groceries.jpg" /> </div>
-                                <div class="card_title title-white">
-                                    <p>Groceries</p>
-                                    <% if(data.transport){ %>
-                                        <p>
-                                            <%= data.groceries %> $
-                                        </p>
-                                        <% }else{ %>
-                                            <p>0 $</p>
-                                            <% } %>
-                                </div>
-                            </div>
-                        </div>
-                    </h4>
-                
-                    <!-- Modal GROCERIES -->
-                    <div class="modal fade" id="groceriesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Groceries</h5>
-                                    <img class="iconomodal" src="resources/img/groceries.svg" >
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        <label for="method">Payment method:</label>
-                                        <select name="method" id="method">
-                                            <option value="method">Card</option>
-                                            <option value="Cash">Cash</option>
-                                        </select>
-                                    </div>
-                                
-                                    <div>
-                                        <label for="">Expense:</label>
-                                        <input type="number" name="" id="" placeholder="3500">$
-                                    </div>
-                                    <div>
-                                        <label for="">Notes:</label><br>
-                                        <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    
-                </div>
-                    
 
-                <div>
-                    <!-- Button trigger modal -->
-                    <h4 type="button" data-toggle="modal" data-target="#healthModal">
-                        <div class="cards-list">
-                        
-                            <div class="card 1">
-                                <div class="card_image"> <img src="resources/img/categorias/health.jpg" /> </div>
-                                <div class="card_title title-white">
-                                    <p>Health</p>
-                                    <% if(data.transport){ %>
-                                        <p>
-                                            <%= data.health %> $
-                                        </p>
-                                        <% }else{ %>
-                                            <p>0 $</p>
-                                            <% } %>
-                                </div>
-                            </div>
-                        </div>
-                    </h4>
-                
-                    <!-- Modal Health -->
-                    <div class="modal fade" id="healthModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Health</h5>
-                                    <img class="iconomodal" src="resources/img/health.svg">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        <label for="method">Payment method:</label>
-                                        <select name="method" id="method">
-                                            <option value="method">Card</option>
-                                            <option value="Cash">Cash</option>
-                                        </select>
-                                    </div>
-                                
-                                    <div>
-                                        <label for="">Expense:</label>
-                                        <input type="number" name="" id="" placeholder="3500">$
-                                    </div>
-                                    <div>
-                                        <label for="">Notes:</label><br>
-                                        <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-               
-                </div>
-
-                <div>
-                    <!-- Button trigger modal -->
-                    <h4 type="button" data-toggle="modal" data-target="#petModal">
-                        <div class="cards-list">
-                        
-                            <div class="card 1">
-                                <div class="card_image"> <img src="resources/img/categorias/pet.webp" /> </div>
-                                <div class="card_title title-white">
-                                    <p>Pet</p>
-                                    <% if(data.transport){ %>
-                                        <p>
-                                            <%= data.pet %> $
-                                        </p>
-                                        <% }else{ %>
-                                            <p>0 $</p>
-                                            <% } %>
-                                </div>
-                            </div>
-                        </div>
-                    </h4>
-                
-                    <!-- Modal PET -->
-                    <div class="modal fade" id="petModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Pet</h5>
-                                    <img class="iconomodal" src="https://us.123rf.com/450wm/sn333g/sn333g1802/sn333g180200135/95329952-coraz%C3%B3n-creativo-con-la-pata-de-gato-imprime-ilustraci%C3%B3n-vector-huellas-de-perro-en-forma-de-coraz%C3%B3n.jpg">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        <label for="method">Payment method:</label>
-                                        <select name="method" id="method">
-                                            <option value="method">Card</option>
-                                            <option value="Cash">Cash</option>
-                                        </select>
-                                    </div>
-                                
-                                    <div>
-                                        <label for="">Expense:</label>
-                                        <input type="number" name="" id="" placeholder="3500">$
-                                    </div>
-                                    <div>
-                                        <label for="">Notes:</label><br>
-                                        <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   
-                </div>
-
-                <div>
-                    <!-- Button trigger modal -->
-                    <h4 type="button" data-toggle="modal" data-target="#bankModal">
-                        <div class="cards-list">
-                        
-                            <div class="card 1">
-                                <div class="card_image"> <img src="resources/img/categorias/bank.jpg" /> </div>
-                                <div class="card_title title-white">
-                                    <p>Bank</p>
-                                    <% if(data.bank){ %>
-                                        <p>
-                                            <%= data.bank %> $
-                                        </p>
-                                        <% }else{ %>
-                                            <p>0 $</p>
-                                            <% } %>
-                                </div>
-                            </div>
-                        </div>
-                    </h4>
-                
-                    <!-- Modal BANK -->
-                    <div class="modal fade" id="bankModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Bank</h5>
-                                    <img class="iconomodal" src="resources/img/bank.svg">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        <label for="method">Payment method:</label>
-                                        <select name="method" id="method">
-                                            <option value="method">Card</option>
-                                            <option value="Cash">Cash</option>
-                                        </select>
-                                    </div>
-                                
-                                    <div>
-                                        <label for="">Expense:</label>
-                                        <input type="number" name="" id="" placeholder="3500">$
-                                    </div>
-                                    <div>
-                                        <label for="">Notes:</label><br>
-                                        <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                  
-                </div>
-                
-                <div>
-                    <!-- Button trigger modal -->
-                    <h4 type="button" data-toggle="modal" data-target="#giftModal">
-                        <div class="cards-list">
-                        
-                            <div class="card 1">
-                                <div class="card_image"> <img src="resources/img/categorias/gift.jpg" /> </div>
-                                <div class="card_title title-white">
-                                    <p>Gift</p>
-                                    <% if(data.transport){ %>
-                                        <p>
-                                            <%= data.gift %> $
-                                        </p>
-                                        <% }else{ %>
-                                            <p>0 $</p>
-                                            <% } %>
-                                </div>
-                            </div>
-                        </div>
-                    </h4>
-                
-                    <!-- Modal GIFT -->
-                    <div class="modal fade" id="giftModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Gift</h5>
-                                    <img class="iconomodal" src="resources/img/gift.svg">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        <label for="method">Payment method:</label>
-                                        <select name="method" id="method">
-                                            <option value="method">Card</option>
-                                            <option value="Cash">Cash</option>
-                                        </select>
-                                    </div>
-                                
-                                    <div>
-                                        <label for="">Expense:</label>
-                                        <input type="number" name="" id="" placeholder="3500">$
-                                    </div>
-                                    <div>
-                                        <label for="">Notes:</label><br>
-                                        <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                
-                </div>
-
-                    
-                <div>
-                    <!-- Button trigger modal -->
-                    <h4 type="button" data-toggle="modal" data-target="#homeModal">
-                        <div class="cards-list">
-                        
-                            <div class="card 1">
-                                <div class="card_image"> <img src="resources/img/categorias/home.jpg" /> </div>
-                                <div class="card_title title-white">
-                                    <p>Home</p>
-                                    <% if(data.transport){ %>
-                                        <p>
-                                            <%= data.home %> $
-                                        </p>
-                                        <% }else{ %>
-                                            <p>0 $</p>
-                                            <% } %>
-                                </div>
-                            </div>
-                        </div>
-                    </h4>
-                
-                    <!-- Modal HOME -->
-                    <div class="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Home</h5>
-                                    <img class="iconomodal" src="resources/img/home.svg">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        <label for="method">Payment method:</label>
-                                        <select name="method" id="method">
-                                            <option value="method">Card</option>
-                                            <option value="Cash">Cash</option>
-                                        </select>
-                                    </div>
-                                
-                                    <div>
-                                        <label for="">Expense:</label>
-                                        <input type="number" name="" id="" placeholder="3500">$
-                                    </div>
-                                    <div>
-                                        <label for="">Notes:</label><br>
-                                        <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    
-                </div>
-
-                <div>
-                    <!-- Button trigger modal -->
-                    <h4 type="button" data-toggle="modal" data-target="#familyModal">
-                        <div class="cards-list">
-                        
-                            <div class="card 1">
-                                <div class="card_image"> <img src="resources/img/categorias/family.jpg" /> </div>
-                                <div class="card_title title-white">
-                                    <p>Family</p>
-                                    <% if(data.transport){ %>
-                                        <p>
-                                            <%= data.family %> $
-                                        </p>
-                                        <% }else{ %>
-                                            <p>0 $</p>
-                                            <% } %>
-                                </div>
-                            </div>
-                        </div>
-                    </h4>
-                
-                    <!-- Modal HOME -->
-                    <div class="modal fade" id="familyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Family</h5>
-                                    <img class="iconomodal" src="resources/img/family.svg">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        <label for="method">Payment method:</label>
-                                        <select name="method" id="method">
-                                            <option value="method">Card</option>
-                                            <option value="Cash">Cash</option>
-                                        </select>
-                                    </div>
-                                
-                                    <div>
-                                        <label for="">Expense:</label>
-                                        <input type="number" name="" id="" placeholder="3500">$
-                                    </div>
-                                    <div>
-                                        <label for="">Notes:</label><br>
-                                        <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    
-                </div>
-                    
-                
-                <div>
-                    <!-- Button trigger modal -->
-                    <h4 type="button" data-toggle="modal" data-target="#othersModal">
-                        <div class="cards-list">
-                        
-                            <div class="card 1">
-                                <div class="card_image"> <img src="resources/img/categorias/others.jpg" /> </div>
-                                <div class="card_title title-white">
-                                    <p>Others</p>
-                                    <% if(data.transport){ %>
-                                        <p>
-                                            <%= data.others %> $
-                                        </p>
-                                        <% }else{ %>
-                                            <p>0 $</p>
-                                            <% } %>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </h4>
-                
-                    <!-- Modal OTHERS -->
-                    <div class="modal fade" id="othersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Others</h5>
-                                    <img class="iconomodal" src="resources/img/others.svg">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div>
-                                        <label for="method">Payment method:</label>
-                                        <select name="method" id="method">
-                                            <option value="method">Card</option>
-                                            <option value="Cash">Cash</option>
-                                        </select>
-                                    </div>
-                                
-                                    <div>
-                                        <label for="">Expense:</label>
-                                        <input type="number" name="" id="" placeholder="3500">$
-                                    </div>
-                                    <div>
-                                        <label for="">Notes:</label><br>
-                                        <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                   
-                   
-                    
-
-                    
-               
-                
-        </div>
-
-
-
-      
     </div>
 
     <nav class="naav">
         <ul class="nav justify-content-center">
-        <li class="nav-item">
-            <a class="nav-link active" href="/">Cuentas</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="">Categorias</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " href="#">Transacciones</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " href="#">Resumen</a>
-        </li>
-    </ul></nav>
+            <li class="nav-item">
+                <a class="nav-link active" href="/">Cuentas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/categorias">Categorias</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="#">Transacciones</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="#">Resumen</a>
+            </li>
+        </ul>
+    </nav>
 
-    
+
 
 </body>
+
 </html>
 <script src="resources/js/fechas.js"></script>
 <script src="resources/js/modales.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
