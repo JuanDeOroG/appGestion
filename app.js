@@ -97,17 +97,14 @@ const { render } = require("ejs");
             console.log(error)
             
         }else if(rows.length==0){
-            console.log("No se encontraron resultados con la fecha")
+            res.render("transactions", { datos: rows, fecha_actual })
+
 
         }else{
-            let transaccion= {}
             for(x of rows){
 
                 if (x[x.nombre]!=0){ // si (x.["restaurant"]) es diferente de cero entonces ajá... 
-                    console.log(x.cuentas)
-                    console.log(x[x.nombre])
-                    console.log(x.notes)
-
+                    
                 }
                
             }

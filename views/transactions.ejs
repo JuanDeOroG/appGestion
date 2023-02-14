@@ -10,7 +10,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="resources/css/index.css">
     <link rel="stylesheet" href="resources/css/categoria.css">
-    <link rel="stylesheet" href="resources/css/modals.css">
+    <link rel="stylesheet" href="resources/css/transaction.css">
+
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +22,7 @@
 
 <body>
     <header class="header">
-        <h3 class="alltitle">Categories</h3>
+        <h3 class="alltitle">Transactions</h3>
 
 
     </header>
@@ -32,18 +33,36 @@
        
 
             <form id="formEnviar" class="calendario" action="/categorias" method="post">
-                <label for="fecha_actual">Transactions: </label>
+                <label for="fecha_actual">Transactions date: </label>
                 <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
                 
             </form>
             
-            <% for(x of datos){ if(x[x.nombre]!=0){%>
-                <h2><%= x.nombre %></h2>
-                <h3><%= x.cuentas %></h3>
-                <h4>-<%= x[x.nombre] %></h4>
-                <p><%= x.notes %></p>
+            <% if (datos==0) { %>
+                <div class="payment-card">
+                        <h2 class="payment-card__title">Aún no se registran transacciones en esta fecha.</h2>
+                        
+                    </div>
                 
-            <% }} %>
+           <%  }else{ %>
+            <% for(x of datos){ if(x[x.nombre]!=0){%>
+                    
+                    <div class="payment-card">
+                        <h2 class="payment-card__title">Categoría de Pago: <%= x.nombre %></h2>
+                        <p class="payment-card__method">Método de Pago: <%= x.cuentas %> </p>
+                        <% if(x[x.nombre]> 0){ %>
+                        <p class="payment-card__amount">Monto Pagado: <%= x[x.nombre] %></p>
+                        <% }else{ %>
+                        <p class="payment-card__amount" style="color:rgb(13, 161, 13)">Dinero recuperado:  <%= Math.abs(Math.abs(x[x.nombre])) %></p>
+                        <% } %>
+
+                        <p class="payment-card__note">Nota del Pago: <%= x.notes %> </p>
+                    </div>
+                    
+                <% }} %>
+
+           <%  }%>
+                
 
 
 
@@ -58,7 +77,7 @@
                 <a class="nav-link" href="/categorias">Categorias</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="#">Transacciones</a>
+                <a class="nav-link " href="/transactions">Transacciones</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="#">Resumen</a>

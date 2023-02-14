@@ -13,7 +13,7 @@ save2.addEventListener("click", () => {
 save.addEventListener("click", ()=>{
     inputfecha.value=fecha_actual.value
     console.log("Valor agregado")
-    formadd.submit()
+    formadd1.submit()
 })
 
 
