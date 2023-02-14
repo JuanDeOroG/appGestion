@@ -49,11 +49,7 @@ const connection = require("./database/db")
             if (error) {console.log("Error: ",error)
             } else if (rows.length == 0) { // En el caso de que no se encuentren resultados en tal fecha
                 console.log("En la fecha actual, aún no se registran gastos", rows)
-                
-                
-
-                res.render("categorias", {fecha_actual, data: "undefined" })
-
+                res.render("categorias", { total: "undefined",fecha_actual, data: "undefined" })
             } else { // EN EL CASO DE QUE SÍ SE ENCUENTREN RESULTADOS
                 let transport=0;
                 let restaurants = 0;
@@ -80,11 +76,19 @@ const connection = require("./database/db")
                     others += x.others
                 }
                 // console.log("transport es igual a: ",transport)
+                let total= transport+restaurants+freetime+ groceries+ health+ pet + bank+ gift+ home + family+ others
 
-                res.render("categorias", { fecha_actual, data: { transport: transport, restaurants, freetime, groceries, health, pet, bank, gift, home, family, others } })
+                res.render("categorias", { fecha_actual,total:total, data: { transport: transport, restaurants, freetime, groceries, health, pet, bank, gift, home, family, others } })
             }
         })
 
+
+    })
+    
+    app.get("/transactions", (req,res)=>{
+
+
+        res.render("transactions.ejs")
 
     })
 
@@ -97,9 +101,15 @@ app.post("/categorias", async(req, res) => {
             console.log("Error: ", error)
         } else if (rows.length == 0) {
             console.log("No se encontraron", rows)
+            let fecha_actual = moment().format('YYYY-MM-DD')
+            if (fechaElegida==fecha_actual) {
+                today="good"
+                
+            }else{
+                today="bad"
+            }
 
-
-            res.render("categorias", { fecha_actual:fechaElegida, data: "undefined" })
+            res.render("categorias", { total: "undefined", fecha_actual:fechaElegida, data: today })
 
         } else {
             console.log("Sí se encontraron resultados (Post categorias)")
@@ -131,8 +141,8 @@ app.post("/categorias", async(req, res) => {
 
 
             }
-
-            res.render("categorias", { fecha_actual: fechaElegida, data: { transport: transport,restaurants,freetime,groceries,health,pet,bank,gift,home,family,others } })
+            let total = transport + restaurants + freetime + groceries + health + pet + bank + gift + home + family + others
+            res.render("categorias", { fecha_actual: fechaElegida,total, data: { transport: transport,restaurants,freetime,groceries,health,pet,bank,gift,home,family,others } })
         }
     })
 
@@ -162,7 +172,7 @@ app.post("/add",async (req, res) => {
             console.log("No se encontraron", rows)
             
 
-            res.render("categorias", { fecha_actual: fechaElegida, data: "undefined" })
+            res.render("categorias", {total:"undefined", fecha_actual: fechaElegida, data: "undefined" })
 
         } else {
             console.log("Sí se encontraron resultados (Post add)")
@@ -194,14 +204,16 @@ app.post("/add",async (req, res) => {
 
 
             }
-
-            res.render("categorias", { fecha_actual: fechaElegida, data: { transport: transport, restaurants, freetime, groceries, health, pet, bank, gift, home, family, others } })
+            let total = transport + restaurants + freetime + groceries + health + pet + bank + gift + home + family + others
+            res.render("categorias", { fecha_actual: fechaElegida,total, data: { transport: transport, restaurants, freetime, groceries, health, pet, bank, gift, home, family, others } })
         }
     })
 
     
 
 })
+
+
 
 
 app.listen(3000, (req,res)=>{

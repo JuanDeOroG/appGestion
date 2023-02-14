@@ -34,6 +34,9 @@
             <form id="formEnviar" class="calendario" action="/categorias" method="post">
                 <label for="fecha_actual">Calendary: </label>
                 <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
+                <% if(total!= "undefined"){ %>
+                <h3>      El total de esta fecha es: <%= total %>$</h3>
+                <% } %>
             </form>
             
 
@@ -570,40 +573,50 @@
                             </div>
                         </h4>
                     
-                        <!-- Modal GIFT -->
+                        <!-- Modal GIFT 8 -->
                         <div class="modal fade" id="giftModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Gift</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div>
-                                            <label for="method">Payment method:</label>
-                                            <select name="method" id="method">
-                                                <option value="method">Card</option>
-                                                <option value="Cash">Cash</option>
-                                            </select>
+                                <form id="formadd8" action="/add" method="post">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                                Gift</h5>
+                                
+                                
+                                
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
-                    
-                                        <div>
-                                            <label for="">Expense:</label>
-                                            <input type="number" name="" id="" placeholder="3500">$
+                                        <div class="modal-body">
+                                            <div>
+                                                <label for="method">Payment method:</label>
+                                                <select name="method" id="method">
+                                                    <option value="Card">Card</option>
+                                                    <option value="Cash">Cash</option>
+                                                </select>
+                                            </div>
+                                
+                                            <div>
+                                                <label for="">Expense:</label>
+                                                <input type="number" name="expense" id="" placeholder="3500">$
+                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                                <input type="text" class="inputcategory" name="inputcategory" value="gift">
+                                                <input type="text" class="inputfecha" id="inputfecha8" name="inputfecha">
+                                            </div>
+                                            <div>
+                                                <label for="">Notes:</label><br>
+                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <label for="">Notes:</label><br>
-                                            <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" id="save8" class="btn btn-primary">Save
+                                                changes</button>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                         <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
@@ -632,40 +645,50 @@
                             </div>
                         </h4>
                     
-                        <!-- Modal HOME -->
+                        <!-- Modal HOME 9-->
                         <div class="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Home</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div>
-                                            <label for="method">Payment method:</label>
-                                            <select name="method" id="method">
-                                                <option value="method">Card</option>
-                                                <option value="Cash">Cash</option>
-                                            </select>
+                                <form id="formadd9" action="/add" method="post">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                                Home</h5>
+                                
+                                
+                                
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
-                    
-                                        <div>
-                                            <label for="">Expense:</label>
-                                            <input type="number" name="" id="" placeholder="3500">$
+                                        <div class="modal-body">
+                                            <div>
+                                                <label for="method">Payment method:</label>
+                                                <select name="method" id="method">
+                                                    <option value="Card">Card</option>
+                                                    <option value="Cash">Cash</option>
+                                                </select>
+                                            </div>
+                                
+                                            <div>
+                                                <label for="">Expense:</label>
+                                                <input type="number" name="expense" id="" placeholder="3500">$
+                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                                <input type="text" class="inputcategory" name="inputcategory" value="Home">
+                                                <input type="text" class="inputfecha" id="inputfecha9" name="inputfecha">
+                                            </div>
+                                            <div>
+                                                <label for="">Notes:</label><br>
+                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <label for="">Notes:</label><br>
-                                            <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" id="save9" class="btn btn-primary">Save
+                                                changes</button>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                         <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
@@ -694,13 +717,18 @@
                             </div>
                         </h4>
                     
-                        <!-- Modal HOME -->
+                        <!-- Modal Family 10 -->
                         <div class="modal fade" id="familyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog" role="document">
+                            <form id="formadd10" action="/add" method="post">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Family</h5>
+                                        <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                            Family</h5>
+                            
+                            
+                            
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -709,25 +737,30 @@
                                         <div>
                                             <label for="method">Payment method:</label>
                                             <select name="method" id="method">
-                                                <option value="method">Card</option>
+                                                <option value="Card">Card</option>
                                                 <option value="Cash">Cash</option>
                                             </select>
                                         </div>
-                    
+                            
                                         <div>
                                             <label for="">Expense:</label>
-                                            <input type="number" name="" id="" placeholder="3500">$
+                                            <input type="number" name="expense" id="" placeholder="3500">$
+                                            <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                            <input type="text" class="inputcategory" name="inputcategory" value="family">
+                                            <input type="text" class="inputfecha" id="inputfecha10" name="inputfecha">
                                         </div>
                                         <div>
                                             <label for="">Notes:</label><br>
-                                            <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                            <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" id="save10" class="btn btn-primary">Save
+                                            changes</button>
                                     </div>
                                 </div>
+                            </form>
                             </div>
                         </div>
                         <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
@@ -758,13 +791,18 @@
                     
                         </h4>
                     
-                        <!-- Modal OTHERS -->
+                        <!-- Modal OTHERS 11 -->
                         <div class="modal fade" id="othersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog" role="document">
+                            <form id="formadd" action="/add" method="post">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Others</h5>
+                                        <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                            Others</h5>
+                            
+                            
+                            
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -773,25 +811,30 @@
                                         <div>
                                             <label for="method">Payment method:</label>
                                             <select name="method" id="method">
-                                                <option value="method">Card</option>
+                                                <option value="Card">Card</option>
                                                 <option value="Cash">Cash</option>
                                             </select>
                                         </div>
-                    
+                            
                                         <div>
                                             <label for="">Expense:</label>
-                                            <input type="number" name="" id="" placeholder="3500">$
+                                            <input type="number" name="expense" id="" placeholder="3500">$
+                                            <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                            <input type="text" class="inputcategory" name="inputcategory" value="others">
+                                            <input type="text" class="inputfecha" id="inputfecha11" name="inputfecha">
                                         </div>
                                         <div>
                                             <label for="">Notes:</label><br>
-                                            <textarea name="" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                            <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" id="save11" class="btn btn-primary">Save
+                                            changes</button>
                                     </div>
                                 </div>
+                            </form>
                             </div>
                         </div>
                         <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
@@ -817,7 +860,7 @@
                 <a class="nav-link" href="/categorias">Categorias</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="#">Transacciones</a>
+                <a class="nav-link " href="/transactions">Transacciones</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="#">Resumen</a>
