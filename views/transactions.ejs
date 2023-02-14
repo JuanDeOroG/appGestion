@@ -33,10 +33,18 @@
 
             <form id="formEnviar" class="calendario" action="/categorias" method="post">
                 <label for="fecha_actual">Transactions: </label>
-                <input type="date" name="fecha_actual" id="fecha_actual" value="">
+                <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
                 
             </form>
             
+            <% for(x of datos){ if(x[x.nombre]!=0){%>
+                <h2><%= x.nombre %></h2>
+                <h3><%= x.cuentas %></h3>
+                <h4>-<%= x[x.nombre] %></h4>
+                <p><%= x.notes %></p>
+                
+            <% }} %>
+
 
 
     </div>

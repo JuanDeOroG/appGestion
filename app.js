@@ -30,7 +30,9 @@ app.use(session({
     saveUninitialized: true
 }))
 
-const connection = require("./database/db")
+const connection = require("./database/db");
+const { format } = require("./database/db");
+const { render } = require("ejs");
 
 
 
@@ -87,9 +89,34 @@ const connection = require("./database/db")
     
     app.get("/transactions", (req,res)=>{
 
+        fecha_actual= moment().format("YYYY-MM-DD")
 
-        res.render("transactions.ejs")
+        connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others, notes,nombre,cuentas FROM categorias WHERE fechagasto="${fecha_actual}"`, (error, rows, fields) => {
 
+        if (error) {
+            console.log(error)
+            
+        }else if(rows.length==0){
+            console.log("No se encontraron resultados con la fecha")
+
+        }else{
+            let transaccion= {}
+            for(x of rows){
+
+                if (x[x.nombre]!=0){ // si (x.["restaurant"]) es diferente de cero entonces ajá... 
+                    console.log(x.cuentas)
+                    console.log(x[x.nombre])
+                    console.log(x.notes)
+
+                }
+               
+            }
+           
+            res.render("transactions",{datos:rows, fecha_actual})
+        }
+
+
+        })
     })
 
 app.post("/categorias", async(req, res) => {
@@ -157,7 +184,7 @@ app.post("/add",async (req, res) => {
     let category = req.body.inputcategory
     let notes = req.body.notes
     let fechaElegida = req.body.inputfecha
-    connection.query(`INSERT into categorias (fechagasto,cuentas,${category}) VALUES("${fechaElegida}","${cuenta}", ${expense});`,function (error) {
+    connection.query(`INSERT into categorias (fechagasto,cuentas,${category},notes,nombre) VALUES("${fechaElegida}","${cuenta}", ${expense},"${notes}","${category}");`,function (error) {
         if (error) {
             console.log(error)
             
