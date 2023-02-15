@@ -47,7 +47,7 @@ const { render } = require("ejs");
         // Adquirimos la fecha actual para ponerla como fecha inicial en la app
         let fecha_actual = moment().format('YYYY-MM-DD')
         console.log(fecha_actual)
-        connection.query( `SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others FROM categorias WHERE fechagasto="${fecha_actual}"`,(error,rows,fields)=>{
+        connection.query( `SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others FROM categorias WHERE fechagasto="${fecha_actual}"`,async(error,rows,fields)=>{
             if (error) {console.log("Error: ",error)
             } else if (rows.length == 0) { // En el caso de que no se encuentren resultados en tal fecha
                 console.log("En la fecha actual, aún no se registran gastos", rows)
@@ -91,7 +91,7 @@ const { render } = require("ejs");
 
         fecha_actual= moment().format("YYYY-MM-DD")
 
-        connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others, notes,nombre,cuentas FROM categorias WHERE fechagasto="${fecha_actual}"`, (error, rows, fields) => {
+        connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others, notes,nombre,cuentas FROM categorias WHERE fechagasto="${fecha_actual}"`, async (error, rows, fields) => {
 
         if (error) {
             console.log(error)
@@ -101,13 +101,7 @@ const { render } = require("ejs");
 
 
         }else{
-            for(x of rows){
-
-                if (x[x.nombre]!=0){ // si (x.["restaurant"]) es diferente de cero entonces ajá... 
-                    
-                }
-               
-            }
+            
            
             res.render("transactions",{datos:rows, fecha_actual})
         }
@@ -120,7 +114,7 @@ app.post("/categorias", async(req, res) => {
     // Adquirimos la fecha actual para ponerla como fecha inicial en la app
     let fechaElegida= req.body.fecha_actual
 
-    connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others FROM categorias WHERE fechagasto="${fechaElegida}"`, (error, rows, fields) => {
+    connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others FROM categorias WHERE fechagasto="${fechaElegida}"`, async (error, rows, fields) => {
         if (error) {
             console.log("Error: ", error)
         } else if (rows.length == 0) {
@@ -181,7 +175,7 @@ app.post("/add",async (req, res) => {
     let category = req.body.inputcategory
     let notes = req.body.notes
     let fechaElegida = req.body.inputfecha
-    connection.query(`INSERT into categorias (fechagasto,cuentas,${category},notes,nombre) VALUES("${fechaElegida}","${cuenta}", ${expense},"${notes}","${category}");`,function (error) {
+    connection.query(`INSERT into categorias (fechagasto,cuentas,${category},notes,nombre) VALUES("${fechaElegida}","${cuenta}", ${expense},"${notes}","${category}");`,async function (error) {
         if (error) {
             console.log(error)
             
@@ -189,7 +183,7 @@ app.post("/add",async (req, res) => {
         
     })
 
-    connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others FROM categorias WHERE fechagasto="${fechaElegida}"`, (error, rows, fields) => {
+    connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others FROM categorias WHERE fechagasto="${fechaElegida}"`, async (error, rows, fields) => {
         if (error) {
             console.log("Error: ", error)
         } else if (rows.length == 0) {
@@ -237,7 +231,31 @@ app.post("/add",async (req, res) => {
 
 })
 
+app.post("/transactions",async (req,res)=>{
 
+    let fechaElegida = req.body.fecha_actual
+    
+    connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others, notes,nombre,cuentas FROM categorias WHERE fechagasto="${fechaElegida}"`, async (error, rows, fields) => {
+
+        if (error) {
+            console.log(error)
+
+        } else if (rows.length == 0) {
+            res.render("transactions", { datos: rows, fecha_actual:fechaElegida })
+
+
+        } else {
+
+
+            res.render("transactions", { datos: rows, fecha_actual:fechaElegida })
+        }
+
+
+    })
+
+    
+    
+})
 
 
 app.listen(3000, (req,res)=>{

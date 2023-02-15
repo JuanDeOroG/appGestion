@@ -32,7 +32,7 @@
 
        
 
-            <form id="formEnviar" class="calendario" action="/categorias" method="post">
+            <form id="formEnviar" class="calendario" action="/transactions" method="post">
                 <label for="fecha_actual">Transactions date: </label>
                 <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
                 
@@ -90,7 +90,12 @@
 </body>
 
 </html>
-<script src="resources/js/fechas.js"></script>
+<script>
+    fecha_actual.addEventListener("change", () => {
+            formEnviar.submit()
+           
+        })
+</script>
 <script src="resources/js/modales.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
