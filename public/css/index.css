@@ -8,7 +8,7 @@ html,body{
  .alltitle, .calendario{
     display: flex;
     align-items: center;
-    
+    margin-bottom: 5px;
     justify-content: center;
     color: white;
 }
@@ -31,9 +31,11 @@ header{
 .totalcuentas p{
     position: relative;
     float: right;
+    
 }
 .totalcuentas{
     margin-bottom: 4%;
+    text-align: center;
 }
 
 

@@ -25,29 +25,77 @@
     
     
         <div class="totalcuentas">
-            <h4>CUENTAS</h4>
-            <p>$0 Pesos</p> 
+            <h4  class="bgpurple">CUENTAS</h4>
+            
         </div>
 
        
         <div class="card">
-            <h2 class="account-name">Card</h2>
+            <div class="alinear">
+                <h2 class="account-name">Card</h2>
+                <div class="containerBtn">
+                    <button class="btnAdd">Add money to card</button>
+                </div>
+            </div>
+            
+        
             <div class="balance-container">
                 <p class="balance-label">Amount:</p>
-                <p class="balance-amount">
-                    <%= datos.card %>$
-                </p>
+                <% if(datos!="undefined" ) {%>
+                    <% if(intcard>0){ %>
+                        <p class="balance-amount" style="color: #0da10d;">
+                            <%= datos.card %>$
+                        </p>
+                        <% }else{ %>
+                            <p class="balance-amount" style="color: red;">
+                                <%= datos.card %>$
+                            </p>
+                            <% } %>
+                                <%}else{ %>
+        
+                                    <p class="balance-amount">
+                                        0$
+                                    </p>
+        
+                                    <% } %>
             </div>
+        
+        
         </div>
 
-        
         <div class="card">
-            <h2 class="account-name">Cash</h2>
+            <div class="alinear">
+                <h2 class="account-name">Cash</h2>
+                <div class="containerBtn">
+                    <button class="btnAdd">Add money to cash</button>
+                </div>
+            </div>
+            
             <div class="balance-container">
                 <p class="balance-label">Amount:</p>
-                <p class="balance-amount"><%= datos.cash %>$</p>
+                <% if(datos!="undefined" ) {%>
+                    <% if(intcash>0){ %>
+                        <p class="balance-amount" style="color: #0da10d;">
+                            <%= datos.cash %>$
+                        </p>
+                        <% }else{ %>
+                            <p class="balance-amount" style="color: red;">
+                                <%= datos.cash %>$
+                            </p>
+                            <% } %>
+                                <%}else{ %>
+                
+                                    <p class="balance-amount">
+                                        0$
+                                    </p>
+                
+                                    <% } %>
             </div>
+            
+            
         </div>
+        
+       
 
        
 
@@ -74,3 +122,9 @@
 
 </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>

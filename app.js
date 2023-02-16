@@ -47,7 +47,7 @@ const { render } = require("ejs");
                 
             }else if(rows.length==0){ // Si no se encontró ninguna cuenta
                 console.log(rows)
-                res.render("index",{datos:"undefined"})
+                res.render("index", { datos: "undefined", intcard: "undefined", intcash: "undefined" })
             }else{// En el caso de que sí se hayan encontrado cuentas (en teoria siempre estaran cash y card por defecto)
 
                 // console.log(rows)
@@ -61,7 +61,7 @@ const { render } = require("ejs");
 
                 connection.query(`SELECT cuentas, transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others FROM categorias`, async (error, results, fields) => {
                     if(results.length==0){
-                        res.render("index", { datos: { card: (card).toLocaleString('en'), cash: (cash).toLocaleString('en') } })
+                        res.render("index", { datos: { card: (card).toLocaleString('en'), cash: (cash).toLocaleString('en') }, intcard:card,intcash:cash })
 
                     }else{
                         let transport = 0;
@@ -130,11 +130,11 @@ const { render } = require("ejs");
                         cashExpenses = transport + restaurants + freetime + groceries + health + pet + bank + gift + home + family + others +shopping
                         console.log("CASH EXPENSES: ", cashExpenses)
                         
-                        card = (card - cardExpenses).toLocaleString('en')  
-                        cash = (cash - cashExpenses).toLocaleString('en')             
+                        card = card - cardExpenses
+                            cash = cash - cashExpenses           
 
 
-                        res.render("index",{datos:{cash,card}})
+                        res.render("index", { datos: { cash: (cash).toLocaleString('en'), card: (card).toLocaleString('en') }, intcard: card, intcash: cash})
 
                     }
                 })
@@ -217,6 +217,15 @@ const { render } = require("ejs");
 
         })
     })
+
+
+app.post("/", async (req,res)=>{
+    connection.query(`INSERT INTO accounts ()`, async (error, rows, fields)=>{
+        if (error) {
+            res.send("HUBO UN ERROR AL INGRESAR DINERO EN LA CUENTA")
+        }
+    })
+})
 
 app.post("/categorias", async(req, res) => {
     // Adquirimos la fecha actual para ponerla como fecha inicial en la app
