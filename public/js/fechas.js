@@ -71,3 +71,9 @@ save11.addEventListener("click", () => {
     console.log("Valor agregado")
     formadd11.submit()
 })
+
+save12.addEventListener("click", () => {
+    inputfecha12.value = fecha_actual.value
+    console.log("Valor agregado")
+    formadd12.submit()
+})

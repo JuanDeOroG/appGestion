@@ -29,825 +29,901 @@
     <div class="container">
 
 
-       
 
-            <form id="formEnviar" class="calendario" action="/categorias" method="post">
-                <label for="fecha_actual">Calendary: </label>
-                <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
-                <% if(total!= "undefined"){ %>
-                <h3>      El total de esta fecha es: <%= total %>$</h3>
+
+        <form id="formEnviar" class="calendario" action="/categorias" method="post">
+            <label for="fecha_actual">Calendary: </label>
+            <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
+            <% if(total!="undefined" ){ %>
+                <h3> El total de esta fecha es: <%= total %>$</h3>
                 <% } %>
-            </form>
+        </form>
+
+
+        <div class="categorias">
+
+            <div>
+                <!-- Button trigger modal -->
+                <h4 type="button" data-toggle="modal" data-target="#exampleModal">
+                    <div class="cards-list">
+
+                        <div class="card 1">
+                            <div class="card_image"> <img src="/resources/img/categorias/transport.jpg">
+                                <div class="card_title title-white">
+                                    <p>Transport</p>
+                                    <% if(data.transport){ %>
+                                        <p>
+                                            <%= data.transport %> $
+                                        </p>
+                                        <% }else{ %>
+                                            <p>0 $</p>
+                                            <% } %>
+                                </div>
+                            </div>
+                        </div>
+                </h4>
+
+                <!-- Modal TRANSPORT -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+
+                        <form id="formadd1" action="/add" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                        Transport</h5>
+
+
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="Card">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="expense" id="" placeholder="3500">$
+                                        <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                        <input type="text" class="inputcategory" name="inputcategory" value="transport">
+                                        <input type="text" class="inputfecha" id="inputfecha" name="inputfecha">
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" id="save" class="btn btn-primary">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+
+            </div>
+
+            <div>
+                <!-- Button trigger modal -->
+                <h4 type="button" data-toggle="modal" data-target="#restaurantsModal">
+                    <div class="cards-list">
+
+                        <div class="card 1">
+                            <div class="card_image"> <img src="resources/img/categorias/restaurant.jpg">
+                                <div class="card_title title-white">
+                                    <p>Restaurants</p>
+                                    <% if(data.restaurants){ %>
+                                        <p>
+                                            <%= data.restaurants %> $
+                                        </p>
+                                        <% }else{ %>
+                                            <p>0 $</p>
+                                            <% } %>
+                                </div>
+                            </div>
+                        </div>
+                </h4>
+
+                <!-- Modal RESTAURANT -->
+                <div class="modal fade" id="restaurantsModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <form id="formadd2" action="/add" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                        Restaurants</h5>
+
+
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="Card">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="expense" id="" placeholder="3500">$
+                                        <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                        <input type="text" class="inputcategory" name="inputcategory"
+                                            value="restaurants">
+                                        <input type="text" class="inputfecha" id="inputfecha2" name="inputfecha">
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" id="save2" class="btn btn-primary">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+
+            <div>
+                <!-- Button trigger modal FREETIME -->
+                <h4 type="button" data-toggle="modal" data-target="#freetimeModal">
+                    <div class="cards-list">
+
+                        <div class="card 1">
+                            <div class="card_image"> <img src="resources/img/categorias/freetime.jpg" />
+                            </div>
+                            <div class="card_title title-white">
+                                <p>Freetime</p>
+                                <% if(data.freetime){ %>
+                                    <p>
+                                        <%= data.freetime %> $
+                                    </p>
+                                    <% }else{ %>
+                                        <p>0 $</p>
+                                        <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </h4>
+
+                <!-- Modal FREETIME  3-->
+                <div class="modal fade" id="freetimeModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <form id="formadd3" action="/add" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                        Freetime</h5>
+
+
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="Card">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="expense" id="" placeholder="3500">$
+                                        <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                        <input type="text" class="inputcategory" name="inputcategory" value="freetime">
+                                        <input type="text" class="inputfecha" id="inputfecha3" name="inputfecha">
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" id="save3" class="btn btn-primary">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+
+            </div>
+
+
+
+
+            <div>
+                <!-- Button GROCERIES modal -->
+                <h4 type="button" data-toggle="modal" data-target="#groceriesModal">
+                    <div class="cards-list">
+
+                        <div class="card 1">
+                            <div class="card_image"> <img src="resources/img/categorias/groceries.jpg" />
+                            </div>
+                            <div class="card_title title-white">
+                                <p>Groceries</p>
+                                <% if(data.groceries){ %>
+                                    <p>
+                                        <%= data.groceries %> $
+                                    </p>
+                                    <% }else{ %>
+                                        <p>0 $</p>
+                                        <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </h4>
+
+                <!-- Modal GROCERIES 4 -->
+                <div class="modal fade" id="groceriesModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <form id="formadd4" action="/add" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                        Groceries</h5>
+
+
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="Card">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="expense" id="" placeholder="3500">$
+                                        <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                        <input type="text" class="inputcategory" name="inputcategory" value="groceries">
+                                        <input type="text" class="inputfecha" id="inputfecha4" name="inputfecha">
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" id="save4" class="btn btn-primary">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+
+            </div>
+
+
+            <div>
+                <!-- Button  modal HEALTH -->
+                <h4 type="button" data-toggle="modal" data-target="#healthModal">
+                    <div class="cards-list">
+
+                        <div class="card 1">
+                            <div class="card_image"> <img src="resources/img/categorias/health.jpg" />
+                            </div>
+                            <div class="card_title title-white">
+                                <p>Health</p>
+                                <% if(data.health){ %>
+                                    <p>
+                                        <%= data.health %> $
+                                    </p>
+                                    <% }else{ %>
+                                        <p>0 $</p>
+                                        <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </h4>
+
+                <!-- Modal Health 5-->
+                <div class="modal fade" id="healthModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <form id="formadd5" action="/add" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                        Health</h5>
+
+
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="Card">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="expense" id="" placeholder="3500">$
+                                        <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                        <input type="text" class="inputcategory" name="inputcategory" value="health">
+                                        <input type="text" class="inputfecha" id="inputfecha5" name="inputfecha">
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" id="save5" class="btn btn-primary">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+
+            </div>
+
+            <div>
+                <!-- Button PET modal 6-->
+                <h4 type="button" data-toggle="modal" data-target="#petModal">
+                    <div class="cards-list">
+
+                        <div class="card 1">
+                            <div class="card_image"> <img src="resources/img/categorias/pet.webp" /> </div>
+                            <div class="card_title title-white">
+                                <p>Pet</p>
+                                <% if(data.pet){ %>
+                                    <p>
+                                        <%= data.pet %> $
+                                    </p>
+                                    <% }else{ %>
+                                        <p>0 $</p>
+                                        <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </h4>
+
+                <!-- Modal PET 6-->
+                <div class="modal fade" id="petModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <form id="formadd6" action="/add" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                        Pet</h5>
+
+
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="Card">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="expense" id="" placeholder="3500">$
+                                        <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                        <input type="text" class="inputcategory" name="inputcategory" value="pet">
+                                        <input type="text" class="inputfecha" id="inputfecha6" name="inputfecha">
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" id="save6" class="btn btn-primary">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+                <!-- Button BANK modal 7 -->
+                <h4 type="button" data-toggle="modal" data-target="#bankModal">
+                    <div class="cards-list">
+
+                        <div class="card 1">
+                            <div class="card_image"> <img src="resources/img/categorias/bank.jpg" /> </div>
+                            <div class="card_title title-white">
+                                <p>Bank</p>
+                                <% if(data.bank){ %>
+                                    <p>
+                                        <%= data.bank %> $
+                                    </p>
+                                    <% }else{ %>
+                                        <p>0 $</p>
+                                        <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </h4>
+
+                <!-- Modal BANK 7 -->
+                <div class="modal fade" id="bankModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <form id="formadd7" action="/add" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                        Bank</h5>
+
+
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="Card">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="expense" id="" placeholder="3500">$
+                                        <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                        <input type="text" class="inputcategory" name="inputcategory" value="bank">
+                                        <input type="text" class="inputfecha" id="inputfecha7" name="inputfecha">
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" id="save7" class="btn btn-primary">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+
+            </div>
+
+            <div>
+                <!-- Button trigger modal -->
+                <h4 type="button" data-toggle="modal" data-target="#giftModal">
+                    <div class="cards-list">
+
+                        <div class="card 1">
+                            <div class="card_image"> <img src="resources/img/categorias/gift.jpg" /> </div>
+                            <div class="card_title title-white">
+                                <p>Gift</p>
+                                <% if(data.gift){ %>
+                                    <p>
+                                        <%= data.gift %> $
+                                    </p>
+                                    <% }else{ %>
+                                        <p>0 $</p>
+                                        <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </h4>
+
+                <!-- Modal GIFT 8 -->
+                <div class="modal fade" id="giftModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <form id="formadd8" action="/add" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                        Gift</h5>
+
+
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="Card">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="expense" id="" placeholder="3500">$
+                                        <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                        <input type="text" class="inputcategory" name="inputcategory" value="gift">
+                                        <input type="text" class="inputfecha" id="inputfecha8" name="inputfecha">
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" id="save8" class="btn btn-primary">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+
+            </div>
+
+
+            <div>
+                <!-- Button trigger modal -->
+                <h4 type="button" data-toggle="modal" data-target="#homeModal">
+                    <div class="cards-list">
+
+                        <div class="card 1">
+                            <div class="card_image"> <img src="resources/img/categorias/home.jpg" /> </div>
+                            <div class="card_title title-white">
+                                <p>Home</p>
+                                <% if(data.home){ %>
+                                    <p>
+                                        <%= data.home %> $
+                                    </p>
+                                    <% }else{ %>
+                                        <p>0 $</p>
+                                        <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </h4>
+
+                <!-- Modal HOME 9-->
+                <div class="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <form id="formadd9" action="/add" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                        Home</h5>
+
+
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="Card">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="expense" id="" placeholder="3500">$
+                                        <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                        <input type="text" class="inputcategory" name="inputcategory" value="home">
+                                        <input type="text" class="inputfecha" id="inputfecha9" name="inputfecha">
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" id="save9" class="btn btn-primary">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+
+            </div>
+
+            <div>
+                <!-- Button trigger modal -->
+                <h4 type="button" data-toggle="modal" data-target="#familyModal">
+                    <div class="cards-list">
+
+                        <div class="card 1">
+                            <div class="card_image"> <img src="resources/img/categorias/family.jpg" />
+                            </div>
+                            <div class="card_title title-white">
+                                <p>Family</p>
+                                <% if(data.family){ %>
+                                    <p>
+                                        <%= data.family %> $
+                                    </p>
+                                    <% }else{ %>
+                                        <p>0 $</p>
+                                        <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </h4>
+
+                <!-- Modal Family 10 -->
+                <div class="modal fade" id="familyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <form id="formadd10" action="/add" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                        Family</h5>
+
+
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="Card">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="expense" id="" placeholder="3500">$
+                                        <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                        <input type="text" class="inputcategory" name="inputcategory" value="family">
+                                        <input type="text" class="inputfecha" id="inputfecha10" name="inputfecha">
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" id="save10" class="btn btn-primary">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+
+            </div>
+
+            <div>
+                <!-- Button SHOPPING modal -->
+                <h4 type="button" data-toggle="modal" data-target="#shoppingModal">
+                    <div class="cards-list">
+            
+                        <div class="card 1">
+                            <div class="card_image"> <img src="resources/img/categorias/others.jpg" />
+                            </div>
+                            <div class="card_title title-white">
+                                <p>Shopping</p>
+                                <% if(data.shopping){ %>
+                                    <p>
+                                        <%= data.shopping %> $
+                                    </p>
+                                    <% }else{ %>
+                                        <p>0 $</p>
+                                        <% } %>
+                            </div>
+                        </div>
+                    </div>
+            
+                </h4>
+            
+                <!-- Modal SHOPPING 12 -->
+                <div class="modal fade" id="shoppingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <form id="formadd12" action="/add" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                        Shopping</h5>
+            
+            
+            
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="Card">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+            
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="expense" id="" placeholder="3500">$
+                                        <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                        <input type="text" class="inputcategory" name="inputcategory" value="shopping">
+                                        <input type="text" class="inputfecha" id="inputfecha12" name="inputfecha">
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" id="save12" class="btn btn-primary">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+            
+            
+            
+            
+            
+            
+            
+            </div>
+
+            <div>
+                <!-- Button OTHERS modal -->
+                <h4 type="button" data-toggle="modal" data-target="#othersModal">
+                    <div class="cards-list">
+
+                        <div class="card 1">
+                            <div class="card_image"> <img src="resources/img/categorias/others.jpg" />
+                            </div>
+                            <div class="card_title title-white">
+                                <p>Others</p>
+                                <% if(data.others){ %>
+                                    <p>
+                                        <%= data.others %> $
+                                    </p>
+                                    <% }else{ %>
+                                        <p>0 $</p>
+                                        <% } %>
+                            </div>
+                        </div>
+                    </div>
+
+                </h4>
+
+                <!-- Modal OTHERS 11 -->
+                <div class="modal fade" id="othersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <form id="formadd11" action="/add" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
+                                        Others</h5>
+
+
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label for="method">Payment method:</label>
+                                        <select name="method" id="method">
+                                            <option value="Card">Card</option>
+                                            <option value="Cash">Cash</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="">Expense:</label>
+                                        <input type="number" name="expense" id="" placeholder="3500">$
+                                        <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
+                                        <input type="text" class="inputcategory" name="inputcategory" value="others">
+                                        <input type="text" class="inputfecha" id="inputfecha11" name="inputfecha">
+                                    </div>
+                                    <div>
+                                        <label for="">Notes:</label><br>
+                                        <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" id="save11" class="btn btn-primary">Save
+                                        changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
+
+
+
+
+
+
+
+            </div>
+
             
 
-                    <div class="categorias">
-
-                        <div>
-                            <!-- Button trigger modal -->
-                            <h4 type="button" data-toggle="modal" data-target="#exampleModal">
-                                <div class="cards-list">
-
-                                    <div class="card 1">
-                                        <div class="card_image"> <img src="/resources/img/categorias/transport.jpg">
-                                            <div class="card_title title-white">
-                                                <p>Transport</p>
-                                                <% if(data.transport){ %>
-                                                    <p>
-                                                        <%= data.transport %> $
-                                                    </p>
-                                                    <% }else{ %>
-                                                        <p>0 $</p>
-                                                        <% } %>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </h4>
-
-                            <!-- Modal TRANSPORT -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-
-                                    <form id="formadd1" action="/add" method="post">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
-                                                    Transport</h5>
-
-
-
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div>
-                                                    <label for="method">Payment method:</label>
-                                                    <select name="method" id="method">
-                                                        <option value="Card">Card</option>
-                                                        <option value="Cash">Cash</option>
-                                                    </select>
-                                                </div>
-
-                                                <div>
-                                                    <label for="">Expense:</label>
-                                                    <input type="number" name="expense" id="" placeholder="3500">$
-                                                    <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
-                                                    <input type="text" class="inputcategory" name="inputcategory"
-                                                        value="transport">
-                                                    <input type="text" class="inputfecha" id="inputfecha"
-                                                        name="inputfecha">
-                                                </div>
-                                                <div>
-                                                    <label for="">Notes:</label><br>
-                                                    <textarea name="notes" id="" cols="35" rows="2"
-                                                        placeholder=" ..."></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                                <button type="button" id="save" class="btn btn-primary">Save
-                                                    changes</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-
-                        </div>
-
-                    <div>
-                        <!-- Button trigger modal -->
-                        <h4 type="button" data-toggle="modal" data-target="#restaurantsModal">
-                            <div class="cards-list">
-                    
-                                <div class="card 1">
-                                    <div class="card_image"> <img src="resources/img/categorias/restaurant.jpg">
-                                        <div class="card_title title-white">
-                                            <p>Restaurants</p>
-                                            <% if(data.restaurants){ %>
-                                                <p>
-                                                    <%= data.restaurants %> $
-                                                </p>
-                                                <% }else{ %>
-                                                    <p>0 $</p>
-                                                    <% } %>
-                                        </div>
-                                    </div>
-                                </div>
-                        </h4>
-                    
-                        <!-- Modal RESTAURANT -->
-                        <div class="modal fade" id="restaurantsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <form id="formadd2" action="/add" method="post">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
-                                                Restaurants</h5>
-                    
-                    
-                    
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div>
-                                                <label for="method">Payment method:</label>
-                                                <select name="method" id="method">
-                                                    <option value="Card">Card</option>
-                                                    <option value="Cash">Cash</option>
-                                                </select>
-                                            </div>
-                    
-                                            <div>
-                                                <label for="">Expense:</label>
-                                                <input type="number" name="expense" id="" placeholder="3500">$
-                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
-                                                <input type="text" class="inputcategory" name="inputcategory" value="restaurants">
-                                                <input type="text" class="inputfecha" id="inputfecha2" name="inputfecha">
-                                            </div>
-                                            <div>
-                                                <label for="">Notes:</label><br>
-                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" id="save2" class="btn btn-primary">Save
-                                                changes</button>
-                                        </div>
-                                    </div>
-                                </form>
-                    
-                            </div>
-                        </div>
-                    
-                    </div>
-                    <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    
-                    <div>
-                        <!-- Button trigger modal FREETIME -->
-                        <h4 type="button" data-toggle="modal" data-target="#freetimeModal">
-                            <div class="cards-list">
-                    
-                                <div class="card 1">
-                                    <div class="card_image"> <img src="resources/img/categorias/freetime.jpg" />
-                                    </div>
-                                    <div class="card_title title-white">
-                                        <p>Freetime</p>
-                                        <% if(data.freetime){ %>
-                                            <p>
-                                                <%= data.freetime %> $
-                                            </p>
-                                            <% }else{ %>
-                                                <p>0 $</p>
-                                                <% } %>
-                                    </div>
-                                </div>
-                            </div>
-                        </h4>
-                    
-                        <!-- Modal FREETIME  3-->
-                        <div class="modal fade" id="freetimeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <form id="formadd3" action="/add" method="post">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
-                                                Freetime</h5>
-                    
-                    
-                    
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div>
-                                                <label for="method">Payment method:</label>
-                                                <select name="method" id="method">
-                                                    <option value="Card">Card</option>
-                                                    <option value="Cash">Cash</option>
-                                                </select>
-                                            </div>
-                    
-                                            <div>
-                                                <label for="">Expense:</label>
-                                                <input type="number" name="expense" id="" placeholder="3500">$
-                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
-                                                <input type="text" class="inputcategory" name="inputcategory" value="freetime">
-                                                <input type="text" class="inputfecha" id="inputfecha3" name="inputfecha">
-                                            </div>
-                                            <div>
-                                                <label for="">Notes:</label><br>
-                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" id="save3" class="btn btn-primary">Save
-                                                changes</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    
-                    </div>
-                    
-                    
-                    
-                    
-                    <div>
-                        <!-- Button GROCERIES modal -->
-                        <h4 type="button" data-toggle="modal" data-target="#groceriesModal">
-                            <div class="cards-list">
-                    
-                                <div class="card 1">
-                                    <div class="card_image"> <img src="resources/img/categorias/groceries.jpg" />
-                                    </div>
-                                    <div class="card_title title-white">
-                                        <p>Groceries</p>
-                                        <% if(data.groceries){ %>
-                                            <p>
-                                                <%= data.groceries %> $
-                                            </p>
-                                            <% }else{ %>
-                                                <p>0 $</p>
-                                                <% } %>
-                                    </div>
-                                </div>
-                            </div>
-                        </h4>
-                    
-                        <!-- Modal GROCERIES 4 -->
-                        <div class="modal fade" id="groceriesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <form id="formadd4" action="/add" method="post">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
-                                                Groceries</h5>
-                    
-                    
-                    
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div>
-                                                <label for="method">Payment method:</label>
-                                                <select name="method" id="method">
-                                                    <option value="Card">Card</option>
-                                                    <option value="Cash">Cash</option>
-                                                </select>
-                                            </div>
-                    
-                                            <div>
-                                                <label for="">Expense:</label>
-                                                <input type="number" name="expense" id="" placeholder="3500">$
-                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
-                                                <input type="text" class="inputcategory" name="inputcategory" value="groceries">
-                                                <input type="text" class="inputfecha" id="inputfecha4" name="inputfecha">
-                                            </div>
-                                            <div>
-                                                <label for="">Notes:</label><br>
-                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" id="save4" class="btn btn-primary">Save
-                                                changes</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    
-                    </div>
-                    
-                    
-                    <div>
-                        <!-- Button  modal HEALTH -->
-                        <h4 type="button" data-toggle="modal" data-target="#healthModal">
-                            <div class="cards-list">
-                    
-                                <div class="card 1">
-                                    <div class="card_image"> <img src="resources/img/categorias/health.jpg" />
-                                    </div>
-                                    <div class="card_title title-white">
-                                        <p>Health</p>
-                                        <% if(data.health){ %>
-                                            <p>
-                                                <%= data.health %> $
-                                            </p>
-                                            <% }else{ %>
-                                                <p>0 $</p>
-                                                <% } %>
-                                    </div>
-                                </div>
-                            </div>
-                        </h4>
-                    
-                        <!-- Modal Health 5-->
-                        <div class="modal fade" id="healthModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <form id="formadd5" action="/add" method="post">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
-                                                Health</h5>
-                    
-                    
-                    
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div>
-                                                <label for="method">Payment method:</label>
-                                                <select name="method" id="method">
-                                                    <option value="Card">Card</option>
-                                                    <option value="Cash">Cash</option>
-                                                </select>
-                                            </div>
-                    
-                                            <div>
-                                                <label for="">Expense:</label>
-                                                <input type="number" name="expense" id="" placeholder="3500">$
-                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
-                                                <input type="text" class="inputcategory" name="inputcategory" value="health">
-                                                <input type="text" class="inputfecha" id="inputfecha5" name="inputfecha">
-                                            </div>
-                                            <div>
-                                                <label for="">Notes:</label><br>
-                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" id="save5" class="btn btn-primary">Save
-                                                changes</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    
-                    </div>
-                    
-                    <div>
-                        <!-- Button PET modal 6-->
-                        <h4 type="button" data-toggle="modal" data-target="#petModal">
-                            <div class="cards-list">
-                    
-                                <div class="card 1">
-                                    <div class="card_image"> <img src="resources/img/categorias/pet.webp" /> </div>
-                                    <div class="card_title title-white">
-                                        <p>Pet</p>
-                                        <% if(data.pet){ %>
-                                            <p>
-                                                <%= data.pet %> $
-                                            </p>
-                                            <% }else{ %>
-                                                <p>0 $</p>
-                                                <% } %>
-                                    </div>
-                                </div>
-                            </div>
-                        </h4>
-                    
-                        <!-- Modal PET 6-->
-                        <div class="modal fade" id="petModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <form id="formadd6" action="/add" method="post">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
-                                                Pet</h5>
-                    
-                    
-                    
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div>
-                                                <label for="method">Payment method:</label>
-                                                <select name="method" id="method">
-                                                    <option value="Card">Card</option>
-                                                    <option value="Cash">Cash</option>
-                                                </select>
-                                            </div>
-                    
-                                            <div>
-                                                <label for="">Expense:</label>
-                                                <input type="number" name="expense" id="" placeholder="3500">$
-                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
-                                                <input type="text" class="inputcategory" name="inputcategory" value="pet">
-                                                <input type="text" class="inputfecha" id="inputfecha6" name="inputfecha">
-                                            </div>
-                                            <div>
-                                                <label for="">Notes:</label><br>
-                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" id="save6" class="btn btn-primary">Save
-                                                changes</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    
-                    </div>
-                    
-                    <div>
-                        <!-- Button BANK modal 7 -->
-                        <h4 type="button" data-toggle="modal" data-target="#bankModal">
-                            <div class="cards-list">
-                    
-                                <div class="card 1">
-                                    <div class="card_image"> <img src="resources/img/categorias/bank.jpg" /> </div>
-                                    <div class="card_title title-white">
-                                        <p>Bank</p>
-                                        <% if(data.bank){ %>
-                                            <p>
-                                                <%= data.bank %> $
-                                            </p>
-                                            <% }else{ %>
-                                                <p>0 $</p>
-                                                <% } %>
-                                    </div>
-                                </div>
-                            </div>
-                        </h4>
-                    
-                        <!-- Modal BANK 7 -->
-                        <div class="modal fade" id="bankModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <form id="formadd7" action="/add" method="post">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
-                                                Bank</h5>
-                    
-                    
-                    
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div>
-                                                <label for="method">Payment method:</label>
-                                                <select name="method" id="method">
-                                                    <option value="Card">Card</option>
-                                                    <option value="Cash">Cash</option>
-                                                </select>
-                                            </div>
-                    
-                                            <div>
-                                                <label for="">Expense:</label>
-                                                <input type="number" name="expense" id="" placeholder="3500">$
-                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
-                                                <input type="text" class="inputcategory" name="inputcategory" value="bank">
-                                                <input type="text" class="inputfecha" id="inputfecha7" name="inputfecha">
-                                            </div>
-                                            <div>
-                                                <label for="">Notes:</label><br>
-                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" id="save7" class="btn btn-primary">Save
-                                                changes</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    
-                    </div>
-                    
-                    <div>
-                        <!-- Button trigger modal -->
-                        <h4 type="button" data-toggle="modal" data-target="#giftModal">
-                            <div class="cards-list">
-                    
-                                <div class="card 1">
-                                    <div class="card_image"> <img src="resources/img/categorias/gift.jpg" /> </div>
-                                    <div class="card_title title-white">
-                                        <p>Gift</p>
-                                        <% if(data.gift){ %>
-                                            <p>
-                                                <%= data.gift %> $
-                                            </p>
-                                            <% }else{ %>
-                                                <p>0 $</p>
-                                                <% } %>
-                                    </div>
-                                </div>
-                            </div>
-                        </h4>
-                    
-                        <!-- Modal GIFT 8 -->
-                        <div class="modal fade" id="giftModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <form id="formadd8" action="/add" method="post">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
-                                                Gift</h5>
-                                
-                                
-                                
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div>
-                                                <label for="method">Payment method:</label>
-                                                <select name="method" id="method">
-                                                    <option value="Card">Card</option>
-                                                    <option value="Cash">Cash</option>
-                                                </select>
-                                            </div>
-                                
-                                            <div>
-                                                <label for="">Expense:</label>
-                                                <input type="number" name="expense" id="" placeholder="3500">$
-                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
-                                                <input type="text" class="inputcategory" name="inputcategory" value="gift">
-                                                <input type="text" class="inputfecha" id="inputfecha8" name="inputfecha">
-                                            </div>
-                                            <div>
-                                                <label for="">Notes:</label><br>
-                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" id="save8" class="btn btn-primary">Save
-                                                changes</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    
-                    </div>
-                    
-                    
-                    <div>
-                        <!-- Button trigger modal -->
-                        <h4 type="button" data-toggle="modal" data-target="#homeModal">
-                            <div class="cards-list">
-                    
-                                <div class="card 1">
-                                    <div class="card_image"> <img src="resources/img/categorias/home.jpg" /> </div>
-                                    <div class="card_title title-white">
-                                        <p>Home</p>
-                                        <% if(data.home){ %>
-                                            <p>
-                                                <%= data.home %> $
-                                            </p>
-                                            <% }else{ %>
-                                                <p>0 $</p>
-                                                <% } %>
-                                    </div>
-                                </div>
-                            </div>
-                        </h4>
-                    
-                        <!-- Modal HOME 9-->
-                        <div class="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <form id="formadd9" action="/add" method="post">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
-                                                Home</h5>
-                                
-                                
-                                
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div>
-                                                <label for="method">Payment method:</label>
-                                                <select name="method" id="method">
-                                                    <option value="Card">Card</option>
-                                                    <option value="Cash">Cash</option>
-                                                </select>
-                                            </div>
-                                
-                                            <div>
-                                                <label for="">Expense:</label>
-                                                <input type="number" name="expense" id="" placeholder="3500">$
-                                                <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
-                                                <input type="text" class="inputcategory" name="inputcategory" value="home">
-                                                <input type="text" class="inputfecha" id="inputfecha9" name="inputfecha">
-                                            </div>
-                                            <div>
-                                                <label for="">Notes:</label><br>
-                                                <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" id="save9" class="btn btn-primary">Save
-                                                changes</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    
-                    </div>
-                    
-                    <div>
-                        <!-- Button trigger modal -->
-                        <h4 type="button" data-toggle="modal" data-target="#familyModal">
-                            <div class="cards-list">
-                    
-                                <div class="card 1">
-                                    <div class="card_image"> <img src="resources/img/categorias/family.jpg" />
-                                    </div>
-                                    <div class="card_title title-white">
-                                        <p>Family</p>
-                                        <% if(data.family){ %>
-                                            <p>
-                                                <%= data.family %> $
-                                            </p>
-                                            <% }else{ %>
-                                                <p>0 $</p>
-                                                <% } %>
-                                    </div>
-                                </div>
-                            </div>
-                        </h4>
-                    
-                        <!-- Modal Family 10 -->
-                        <div class="modal fade" id="familyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                            <form id="formadd10" action="/add" method="post">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
-                                            Family</h5>
-                            
-                            
-                            
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div>
-                                            <label for="method">Payment method:</label>
-                                            <select name="method" id="method">
-                                                <option value="Card">Card</option>
-                                                <option value="Cash">Cash</option>
-                                            </select>
-                                        </div>
-                            
-                                        <div>
-                                            <label for="">Expense:</label>
-                                            <input type="number" name="expense" id="" placeholder="3500">$
-                                            <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
-                                            <input type="text" class="inputcategory" name="inputcategory" value="family">
-                                            <input type="text" class="inputfecha" id="inputfecha10" name="inputfecha">
-                                        </div>
-                                        <div>
-                                            <label for="">Notes:</label><br>
-                                            <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" id="save10" class="btn btn-primary">Save
-                                            changes</button>
-                                    </div>
-                                </div>
-                            </form>
-                            </div>
-                        </div>
-                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    
-                    </div>
-                    
-                    
-                    <div>
-                        <!-- Button trigger modal -->
-                        <h4 type="button" data-toggle="modal" data-target="#othersModal">
-                            <div class="cards-list">
-                    
-                                <div class="card 1">
-                                    <div class="card_image"> <img src="resources/img/categorias/others.jpg" />
-                                    </div>
-                                    <div class="card_title title-white">
-                                        <p>Others</p>
-                                        <% if(data.others){ %>
-                                            <p>
-                                                <%= data.others %> $
-                                            </p>
-                                            <% }else{ %>
-                                                <p>0 $</p>
-                                                <% } %>
-                                    </div>
-                                </div>
-                            </div>
-                    
-                        </h4>
-                    
-                        <!-- Modal OTHERS 11 -->
-                        <div class="modal fade" id="othersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                            <form id="formadd11" action="/add" method="post">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" name="exampleModalLabel" id="exampleModalLabel">
-                                            Others</h5>
-                            
-                            
-                            
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div>
-                                            <label for="method">Payment method:</label>
-                                            <select name="method" id="method">
-                                                <option value="Card">Card</option>
-                                                <option value="Cash">Cash</option>
-                                            </select>
-                                        </div>
-                            
-                                        <div>
-                                            <label for="">Expense:</label>
-                                            <input type="number" name="expense" id="" placeholder="3500">$
-                                            <!-- Creamos dos inputs para mandarlos y poder realizar la consulta sql correctamente -->
-                                            <input type="text" class="inputcategory" name="inputcategory" value="others">
-                                            <input type="text" class="inputfecha" id="inputfecha11" name="inputfecha">
-                                        </div>
-                                        <div>
-                                            <label for="">Notes:</label><br>
-                                            <textarea name="notes" id="" cols="35" rows="2" placeholder=" ..."></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" id="save11" class="btn btn-primary">Save
-                                            changes</button>
-                                    </div>
-                                </div>
-                            </form>
-                            </div>
-                        </div>
-                        <!-- <img class="imagensvg" src="resources/img/pet.svg" alt=""> -->
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    </div>
-
-                    </div>
+        </div>
 
     </div>
 

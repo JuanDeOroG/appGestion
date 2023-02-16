@@ -39,7 +39,111 @@ const { render } = require("ejs");
 
 // Rutas gets
     app.get("/", (req,res) =>{
-        res.render("index.ejs")
+
+        // Consultamos el valor de las cuentas en la bd
+        connection.query(`SELECT * FROM accounts`, async (error,rows, fields)=>{
+            if (error) {
+                res.send("Hubo un error al consultar la cuenta...")
+                
+            }else if(rows.length==0){ // Si no se encontró ninguna cuenta
+                console.log(rows)
+                res.render("index",{datos:"undefined"})
+            }else{// En el caso de que sí se hayan encontrado cuentas (en teoria siempre estaran cash y card por defecto)
+
+                // console.log(rows)
+                let card=0
+                let cash=0
+
+                for(x of rows){
+                    card=card+x.card
+                    cash=cash+x.cash
+                }
+
+                connection.query(`SELECT cuentas, transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others FROM categorias`, async (error, results, fields) => {
+                    if(results.length==0){
+                        res.render("index", { datos: { card: (card).toLocaleString('en'), cash: (cash).toLocaleString('en') } })
+
+                    }else{
+                        let transport = 0;
+                        let restaurants = 0;
+                        let freetime = 0;
+                        let groceries = 0;
+                        let health = 0;
+                        let pet = 0;
+                        let bank = 0;
+                        let gift = 0;
+                        let home = 0;
+                        let family = 0;
+                        let others = 0;
+                        let shopping = 0;
+                        for (let x of results) {
+                            if (x.cuentas=="Card") {
+                                
+                                transport = transport + x.transport
+                                restaurants += x.restaurants
+                                freetime += x.freetime
+                                groceries += x.groceries
+                                health += x.health
+                                pet += x.pet
+                                bank += x.bank
+                                gift += x.gift
+                                home += x.home
+                                family += x.family
+                                others += x.others
+                                shopping += x.shopping
+                            }
+                        }
+                        cardExpenses = transport + restaurants + freetime + groceries + health + pet + bank + gift + home + family + others +shopping
+
+                        transport = 0;
+                        restaurants = 0;
+                        freetime = 0;
+                        groceries = 0;
+                        health = 0;
+                        pet = 0;
+                        bank = 0;
+                        gift = 0;
+                        home = 0;
+                        family = 0;
+                        others = 0;
+                        shopping = 0;
+
+                        for (let x of results) {
+                            if (x.cuentas == "Cash") {
+                                transport = transport + x.transport
+                                restaurants += x.restaurants
+                                freetime += x.freetime
+                                groceries += x.groceries
+                                health += x.health
+                                pet += x.pet
+                                bank += x.bank
+                                gift += x.gift
+                                home += x.home
+                                family += x.family
+                                others += x.others
+                                shopping += x.shopping
+                            }
+                        }
+                        // console.log("transport es igual a: ",transport)
+                        
+
+                        cashExpenses = transport + restaurants + freetime + groceries + health + pet + bank + gift + home + family + others +shopping
+                        console.log("CASH EXPENSES: ", cashExpenses)
+                        
+                        card = (card - cardExpenses).toLocaleString('en')  
+                        cash = (cash - cashExpenses).toLocaleString('en')             
+
+
+                        res.render("index",{datos:{cash,card}})
+
+                    }
+                })
+
+
+
+            }
+        })
+
     })
 
     app.get("/categorias", (req, res) => {
@@ -64,6 +168,7 @@ const { render } = require("ejs");
                 let home = 0;
                 let family = 0;
                 let others = 0;
+                let shopping =0;
                 for (let x of rows) {
                     transport=transport + x.transport
                     restaurants += x.restaurants
@@ -76,11 +181,12 @@ const { render } = require("ejs");
                     home += x.home
                     family += x.family
                     others += x.others
+                    shopping+=x.shopping
                 }
                 // console.log("transport es igual a: ",transport)
-                let total= transport+restaurants+freetime+ groceries+ health+ pet + bank+ gift+ home + family+ others
+                let total= transport+restaurants+freetime+ groceries+ health+ pet + bank+ gift+ home + family+ others +shopping
 
-                res.render("categorias", { fecha_actual,total:total, data: { transport: transport, restaurants, freetime, groceries, health, pet, bank, gift, home, family, others } })
+                res.render("categorias", { fecha_actual,total:total, data: { transport: transport, restaurants, freetime, groceries, health, pet, bank, gift, home, family, others,shopping } })
             }
         })
 
@@ -101,6 +207,8 @@ const { render } = require("ejs");
 
 
         }else{
+
+            
             
            
             res.render("transactions",{datos:rows, fecha_actual})
@@ -142,6 +250,7 @@ app.post("/categorias", async(req, res) => {
             let home = 0;
             let family = 0;
             let others = 0;
+            let shopping = 0;
 
 
             for (let x of rows) {
@@ -156,11 +265,12 @@ app.post("/categorias", async(req, res) => {
                 home += x.home
                 family += x.family
                 others += x.others
+                shopping +=x.shopping
 
 
             }
-            let total = transport + restaurants + freetime + groceries + health + pet + bank + gift + home + family + others
-            res.render("categorias", { fecha_actual: fechaElegida,total, data: { transport: transport,restaurants,freetime,groceries,health,pet,bank,gift,home,family,others } })
+            let total = transport + restaurants + freetime + groceries + health + pet + bank + gift + home + family + others + shopping
+            res.render("categorias", { fecha_actual: fechaElegida,total, data: { transport: transport,restaurants,freetime,groceries,health,pet,bank,gift,home,family,others,shopping } })
         }
     })
 
@@ -205,6 +315,7 @@ app.post("/add",async (req, res) => {
             let home = 0;
             let family = 0;
             let others = 0;
+            let shopping = 0;
 
 
             for (let x of rows) {
@@ -219,11 +330,12 @@ app.post("/add",async (req, res) => {
                 home += x.home
                 family += x.family
                 others += x.others
+                shopping +=x.shopping
 
 
             }
-            let total = transport + restaurants + freetime + groceries + health + pet + bank + gift + home + family + others
-            res.render("categorias", { fecha_actual: fechaElegida,total, data: { transport: transport, restaurants, freetime, groceries, health, pet, bank, gift, home, family, others } })
+            let total = transport + restaurants + freetime + groceries + health + pet + bank + gift + home + family + others + shopping
+            res.render("categorias", { fecha_actual: fechaElegida,total, data: { transport: transport, restaurants, freetime, groceries, health, pet, bank, gift, home, family, others,shopping } })
         }
     })
 
@@ -256,6 +368,8 @@ app.post("/transactions",async (req,res)=>{
     
     
 })
+
+
 
 
 app.listen(3000, (req,res)=>{

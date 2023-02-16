@@ -15,7 +15,7 @@ h4{
 
 .categorias{
     display: flex;
-    gap: 25px;
+    gap: 50px;
     flex-wrap: wrap;
 }
 
@@ -30,7 +30,7 @@ h4{
 
 .card {
     margin: 3px auto;
-    width: 200px;
+    width: 240px;
     height: 160px;
     font-weight: 700;
     -webkit-text-stroke: 0.8px black;
@@ -63,8 +63,8 @@ h4{
 }
 
 .card:hover {
-        border: 7px white solid;
-    transform: scale(0.9, 0.9);
+    border: 7px white solid;
+    transform: scale(1.05, 1.05);
     box-shadow: 5px 5px 20px 15px rgba(0, 0, 0, 0.25),
         -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
 }

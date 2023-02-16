@@ -9,6 +9,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="resources/css/index.css">
     <link rel="stylesheet" href="resources/css/fix.css">
+        <link rel="stylesheet" href="resources/css/cuentas.css">
+
 </head>
 <body>
     <header class="header">
@@ -27,20 +29,27 @@
             <p>$0 Pesos</p> 
         </div>
 
-        <div class="cuentas">
-            <h4>Tarjeta</h4>
-            <p>2500$</p>
+       
+        <div class="card">
+            <h2 class="account-name">Card</h2>
+            <div class="balance-container">
+                <p class="balance-label">Amount:</p>
+                <p class="balance-amount">
+                    <%= datos.card %>$
+                </p>
+            </div>
         </div>
 
-        <div class="cuentas">
-            <h4>Efectivo</h4>
-            <p>2500$</p>
+        
+        <div class="card">
+            <h2 class="account-name">Cash</h2>
+            <div class="balance-container">
+                <p class="balance-label">Amount:</p>
+                <p class="balance-amount"><%= datos.cash %>$</p>
+            </div>
         </div>
 
-        <div class="cuentas"> 
-            <h4>Añadir cuenta</h4>
-           
-        </div>
+       
 
 
 
