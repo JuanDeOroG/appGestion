@@ -38,7 +38,7 @@
                 
             </form>
             
-            <% if (datos==0) { %>
+            <% if (datos==0 && ingresos==false) { %>
                 <div class="payment-card">
                         <h2 class="payment-card__title">Aún no se registran transacciones en esta fecha.</h2>
                         
@@ -53,7 +53,7 @@
                         <% if(x[x.nombre]> 0){ %>
                         <p class="payment-card__amount">Monto Pagado: <%= x[x.nombre] %></p>
                         <% }else{ %>
-                        <p class="payment-card__amount" style="color:rgb(13, 161, 13)">Dinero recuperado:  <%= Math.abs(Math.abs(x[x.nombre])) %></p>
+                        <p class="payment-card__amount" style="color:#0da10d">Dinero recuperado:  <%= Math.abs(Math.abs(x[x.nombre])) %></p>
                         <% } %>
 
                         <p class="payment-card__note">Nota del Pago: <%= x.notes %> </p>
@@ -62,6 +62,32 @@
                 <% }} %>
 
            <%  }%>
+
+
+    <!-- INGRESOS A LA CUENTA -->
+        <% if(ingresos!=false){ %>
+            <% if (ingresos.length!=0) { %>
+                <% for(x of ingresos){ %>
+                
+                    <div class="payment-card">
+                        <h2 class="payment-card__title">Causa de ingreso: <%= x.about %>
+                        </h2>
+                        <p class="payment-card__method">Método de Pago: <%= x.name %>
+                        </p>
+                        <% if (x.cash!=0){ %>
+                            <p class="payment-card__amount" style="color:#0da10d ;">Monto ingresado: <%= x.cash %>
+                        </p><% }else{
+
+                        %><p class="payment-card__amount" style="color:#0da10d ;">Monto ingresado: <%= x.card %>
+                        <% }%>
+                    
+
+                         <p class="payment-card__note">Nota del ingreso: <%= x.note %></p>
+                    </div>
+                
+                    <% }} %>
+        <% } %>
+            
                 
 
 

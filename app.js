@@ -128,7 +128,7 @@ const { render } = require("ejs");
                         
 
                         cashExpenses = transport + restaurants + freetime + groceries + health + pet + bank + gift + home + family + others +shopping
-                        console.log("CASH EXPENSES: ", cashExpenses)
+                        // console.log("CASH EXPENSES: ", cashExpenses)
                         
                         card = card - cardExpenses
                             cash = cash - cashExpenses           
@@ -197,33 +197,73 @@ const { render } = require("ejs");
 
         fecha_actual= moment().format("YYYY-MM-DD")
 
-        connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others, notes,nombre,cuentas FROM categorias WHERE fechagasto="${fecha_actual}"`, async (error, rows, fields) => {
+        connection.query(`SELECT name,card, cash, about, note, fecha FROM accounts WHERE fecha="${fecha_actual}"`, async (err, results, field) => {
+            if (err) {
+                res.send(err)
 
-        if (error) {
-            console.log(error)
-            
-        }else if(rows.length==0){
-            res.render("transactions", { datos: rows, fecha_actual })
+            } else if (results.length == 0) {
+                connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others, notes,nombre,cuentas FROM categorias WHERE fechagasto="${fecha_actual}"`, async (error, rows, fields) => {
 
+                    if (error) {
+                        console.log(error)
 
-        }else{
-
-            
-            
-           
-            res.render("transactions",{datos:rows, fecha_actual})
-        }
+                    } else if (rows.length == 0) {
+                        res.render("transactions", { datos: rows, fecha_actual: fecha_actual, ingresos: false })
 
 
+                    } else {
+
+
+
+                        res.render("transactions", { datos: rows, fecha_actual: fecha_actual, ingresos: false })
+                    }
+
+
+                })
+            } else if (results.length != 0) {
+
+                connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others, notes,nombre,cuentas FROM categorias WHERE fechagasto="${fecha_actual}"`, async (error, rows, fields) => {
+
+                    if (error) {
+                        console.log(error)
+
+                    } else if (rows.length == 0) {
+                        res.render("transactions", { datos: rows, fecha_actual: fecha_actual, ingresos: results })
+
+
+                    } else {
+
+
+
+                        res.render("transactions", { datos: rows, fecha_actual: fecha_actual, ingresos: results })
+                    }
+
+
+                })
+
+            }
         })
     })
 
 
 app.post("/", async (req,res)=>{
-    connection.query(`INSERT INTO accounts ()`, async (error, rows, fields)=>{
+    let inputcard=req.body.inputcard
+    let inputcash=req.body.inputcash
+    let note = req.body.note
+    let about = req.body.about
+    let name = req.body.accountname
+
+    let fecha_actual = moment().format('YYYY-MM-DD')
+    connection.query(`INSERT INTO accounts (card,cash, about, note,fecha,name) values("${inputcard}","${inputcash}","${about}","${note}","${fecha_actual}","${name}")`, async (error, rows, fields)=>{
         if (error) {
             res.send("HUBO UN ERROR AL INGRESAR DINERO EN LA CUENTA")
-        }
+        
+    }else{
+        res.redirect("/")
+    }
+
+    
+
     })
 })
 
@@ -355,24 +395,55 @@ app.post("/add",async (req, res) => {
 app.post("/transactions",async (req,res)=>{
 
     let fechaElegida = req.body.fecha_actual
-    
-    connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others, notes,nombre,cuentas FROM categorias WHERE fechagasto="${fechaElegida}"`, async (error, rows, fields) => {
 
-        if (error) {
-            console.log(error)
+    connection.query(`SELECT name,card, cash, about, note, fecha FROM accounts WHERE fecha="${fechaElegida}"`, async (err, results, field) => {
+        if (err) {
+            res.send(err)
+            
+        }else if( results.length==0){
+            connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others, notes,nombre,cuentas FROM categorias WHERE fechagasto="${fechaElegida}"`, async (error, rows, fields) => {
 
-        } else if (rows.length == 0) {
-            res.render("transactions", { datos: rows, fecha_actual:fechaElegida })
+                if (error) {
+                    console.log(error)
+
+                } else if (rows.length == 0) {
+                    res.render("transactions", { datos: rows, fecha_actual: fechaElegida, ingresos: false })
 
 
-        } else {
+                } else {
 
 
-            res.render("transactions", { datos: rows, fecha_actual:fechaElegida })
+
+                    res.render("transactions", { datos: rows, fecha_actual: fechaElegida, ingresos: false })
+                }
+
+
+            })
+        } else if (results.length != 0){
+
+            connection.query(`SELECT transport, restaurants, freetime, groceries, health, pet, shopping, bank, gift, home, family, others, notes,nombre,cuentas FROM categorias WHERE fechagasto="${fechaElegida}"`, async (error, rows, fields) => {
+
+                if (error) {
+                    console.log(error)
+
+                } else if (rows.length == 0) {
+                    res.render("transactions", { datos: rows, fecha_actual: fechaElegida, ingresos:results })
+
+
+                } else {
+
+                
+
+                    res.render("transactions", { datos: rows, fecha_actual: fechaElegida, ingresos: results })
+                }
+
+
+            })
+            
         }
-
-
     })
+    
+    
 
     
     
