@@ -245,6 +245,12 @@ const { render } = require("ejs");
         })
     })
 
+    app.get("/resumen",(req, res)=>{
+
+        res.render("resumen")
+
+    })
+
 
 app.post("/", async (req,res)=>{
     let inputcard=req.body.inputcard
