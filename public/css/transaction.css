@@ -9,9 +9,9 @@
         text-align: center;
 }
 .payment-card:hover {
-    transition: 0.2s;
+    transition: 0.3s;
     border: 7px white solid;
-    transform: scale(1.02, 1.02);
+    transform: scale(1.05, 1);
     box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.25),
         -5px -5px 10px 5px rgba(0, 0, 0, 0.22);
 }
