@@ -1,38 +1,77 @@
-.modal-body {
-    height: 65vh;
-}
+
 
 
 .cuadricula {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
-    margin-top: 0;
-    background-color: #000041;
-}
-
-.row {
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    text-align: center;
+    margin: 20px auto;
+    width: 400px;
+    height: 400px;
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-row: auto auto;
+    grid-column-gap: 0;
+    grid-row-gap: 0;
     
+
+}
+.box {
+    border: 3px solid black;
+        background-color: #8647C1;   
+         padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-family: sans-serif;
 }
 
-.column {
-    border: 2px solid white;
-    border-radius: 10px;
-    width: 225px;
-    height: 120px;
-    margin: 0;
-    margin: 5px;
+.modal-content,.cuadricula{
+        background-color: #4b1979;}
+
+.modal-content{
     text-align: center;
     color: white;
-    font-size: 40px;
+    height: 410px;
+    width: 440px;
+    border-radius: 20px;
 }
-.column div{
-    margin-bottom: 0;
+
+.btnAdd{
+    background-color: #4b1979;
+    border-radius: 30px;
+    border: #4b1979 1px solid;
+    color: white;
+    padding:  3px 15px;
+}
+
+.btnAdd:hover{
+    transition: 0.4s;
+    scale: 1.02 1;
+    background-color: #6e28af;
+        border: #4b1979 1px solid;
+}
+
+.box:hover{
+    background-color: #2f104d;
+    cursor: pointer;
+    transition: 0.5s;
+        scale: 1.04 1.04;
+
+}
+.box:active{
+    transition: 0.2s;
+        scale: 0.9 0.9;
+}
+
+#dayContent{
+    top: 20vh;
+    font-size: 23px;
+    height: 150px;
+        border: black 3px solid;
+}
+
+.modal-title{
+    font-size: 26px;
 }
