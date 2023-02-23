@@ -247,7 +247,7 @@ const { render } = require("ejs");
 
     app.get("/resumen",(req, res)=>{
 
-        res.render("resumen")
+        res.render("resumen", { data: "aaa" })
 
     })
 
@@ -455,7 +455,78 @@ app.post("/transactions",async (req,res)=>{
     
 })
 
-app.post("/resumen")
+app.post("/resumen", async (req,res)=>{
+
+    let day = req.body.dayInput
+    let week = req.body.weekInput
+    let month = req.body.monthInput
+    let year = req.body.yearInput
+
+    if (day!=undefined) {
+        console.log(day)
+        consulta = `SELECT * FROM categorias WHERE fechagasto = "${day}";`
+    } else if (week != undefined) {
+        let numSemana = week.substring(week.length - 2)
+        consulta = `SELECT * FROM categorias WHERE week(fechagasto) = "${numSemana}";`
+    } else if (month != undefined) {
+        // console.log(month.substring(month.length - 2))
+        let numMes = month.substring(month.length - 2)
+        consulta = `SELECT * FROM categorias WHERE MONTH(fechagasto) = "${numMes}";`
+
+    } else if (year != undefined) {
+        console.log(year)
+        consulta = `SELECT * FROM categorias where year(fechagasto) = "${year}";`
+        
+    }else{
+        res.send("No se realizó la petición de forma debida...")
+    }
+
+    connection.query(consulta, async (error, rows)=>{
+        if (error) {
+            res.send("Hubo un error al consultar a la base de datos")
+        }else if (rows.length !=0) {
+            console.log(consulta)
+            console.log(rows)
+            let transport = 0;
+            let restaurants = 0;
+            let freetime = 0;
+            let groceries = 0;
+            let health = 0;
+            let pet = 0;
+            let bank = 0;
+            let gift = 0;
+            let home = 0;
+            let family = 0;
+            let others = 0;
+            let shopping = 0;
+
+
+            for (let x of rows) {
+                transport = transport + x.transport
+                restaurants += x.restaurants
+                freetime += x.freetime
+                groceries += x.groceries
+                health += x.health
+                pet += x.pet
+                bank += x.bank
+                gift += x.gift
+                home += x.home
+                family += x.family
+                others += x.others
+                shopping += x.shopping
+            }
+        
+        res.render("resumen", { data: { transport: transport, restaurants, freetime, groceries, health, pet, bank, gift, home, family, others, shopping } })
+
+            
+        }else{
+            console.log(rows)
+            res.render("resumen",{data:"aaa"})
+        }
+    })
+
+
+})
 
 
 

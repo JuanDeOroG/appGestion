@@ -85,73 +85,84 @@
         <!-- Modal  DAY -->
         <div class="modal fade"  id="day" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" >
+                <form action="/resumen" method="POST">
                 <div class="modal-content" id="dayContent">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Select one day</h5>
-                         <input type="date" id="dayInput" >
+                         <input type="date" name="dayInput" id="dayInput" >
 
                     </div>
                    
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Exit</button>
-                        <button type="button" class="btn btn-success">Search</button>
+                        <button type="submit" class="btn btn-success">Search</button>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
 
         <!-- Modal  Week -->
         <div class="modal fade" id="week" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
+            <form action="/resumen" method="POST">
+
                 <div class="modal-content" id="dayContent">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Select one Week</h5>
-                        <input type="week" id="weekInput">
+                        <input type="week" name="weekInput" id="weekInput">
         
                     </div>
         
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Exit</button>
-                        <button type="button" class="btn btn-success">Search</button>
+                        <button type="submit" class="btn btn-success">Search</button>
                     </div>
                 </div>
+            </form>
             </div>
         </div>
 
         <!-- Modal  Month -->
         <div class="modal fade" id="month" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
+                            <form action="/resumen" method="POST">
+
                 <div class="modal-content" id="dayContent">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Select one Month</h5>
-                        <input type="month" id="monthInput">
+                        <input type="month" name="monthInput">
         
                     </div>
         
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Exit</button>
-                        <button type="button" class="btn btn-success">Search</button>
+                        <button type="submit" class="btn btn-success">Search</button>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
 
         <!-- Modal  Year -->
         <div class="modal fade" id="year" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
+            <form action="/resumen" method="POST">
+
                 <div class="modal-content" id="dayContent">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Select one Year</h5>
-                        <input type="number" id="yearInput" min="1900" max="2099" step="1" value="2023">
+                        <input type="number" name="yearInput" min="1900" max="2099" step="1" value="2023">
 
         
                     </div>
         
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Exit</button>
-                        <button type="button" class="btn btn-success">Search</button>
+                        <button type="submit" class="btn btn-success">Search</button>
                     </div>
                 </div>
+            </form>
             </div>
         </div>
         
@@ -187,10 +198,10 @@
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: ["freeTime", 'Restaurants', 'Transport', 'Groceries', 'Health', 'Pet',"Bank", "Gifts", "Home","Family","Shopping","Others"],
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Expenses',
+                data: [<%=data.freetime %>, <%=data.restaurants %>, <%=data.transport %>, <%=data.groceries %>, <%=data.health %>, <%=data.pet %>,<%=data.bank %>,<%=data.gift%>, <%=data.home %>, <%=data.family %>,<%=data.shopping %>,<%=data.others %>],
                 borderWidth: 2
             }]
         },
