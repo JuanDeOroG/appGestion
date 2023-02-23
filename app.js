@@ -247,7 +247,7 @@ const { render } = require("ejs");
 
     app.get("/resumen",(req, res)=>{
 
-        res.render("resumen", { data: "aaa" })
+        res.render("resumen", { data: "undefined",total:0, mensaje:"You must choose a time period to view the expense data."})
 
     })
 
@@ -515,8 +515,9 @@ app.post("/resumen", async (req,res)=>{
                 others += x.others
                 shopping += x.shopping
             }
-        
-        res.render("resumen", { data: { transport: transport, restaurants, freetime, groceries, health, pet, bank, gift, home, family, others, shopping } })
+            let total = transport + restaurants + freetime + groceries + health + pet + bank + gift + home + family + others + shopping
+            
+        res.render("resumen", { mensaje:"choosed", total, data: { transport: transport, restaurants, freetime, groceries, health, pet, bank, gift, home, family, others, shopping } })
 
             
         }else{

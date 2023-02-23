@@ -84,10 +84,22 @@
     justify-content: center;
     border-radius: 20px;
 }
-#diagrama{
+.graficoPie {
+    margin-top: 10px;
+    width: 100%;
+    height: 600px;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
+#diagrama,#diagramaPie{
+    
     background-color: rgba(255, 255, 255, 0.616);
     
 }
+
+
 
 #yearInput{
     width: 60%;
@@ -96,4 +108,19 @@
 
 .modal-footer{
     height: 300px;
+}
+
+.porcentajes{
+
+    width: 100%;
+    
+    background-color: white;
+}
+.progress{
+    margin: 5px;
+    width: 98%;
+}
+h5{
+    font-size: 24px;
+    margin: auto;
 }

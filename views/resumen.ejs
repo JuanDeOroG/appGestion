@@ -25,7 +25,10 @@
 <body>
     <header class="header">
         <h3 class="alltitle">Resumen</h3>
+                        
 
+        <% if(mensaje !="choosed"){ %>
+        <h5 class="mensaje"><%= mensaje %></h5><% } %>
 
     </header>
 
@@ -34,18 +37,176 @@
 
             <form id="formEnviar" class="calendario" action="/transactions" method="post" aria-label="keondawei" role="img">
                 
-                <button type="button" data-toggle="modal" data-target="#cardModal" class="btnAdd">Select period</button>
+                <button type="button" data-toggle="modal" data-target="#cardModal" class="btnAdd"><% if(mensaje !="choosed" ){ %>Select a time period<%}else{%>
+                    Select other time period<%}  %>
+                </button>
 
             </form>
 
             
+            <!-- Graficos de gastos -->
 
-
+            <% if(data!="undefined" ){ %>
+                <!-- Barras de porcentaje de gastos -->
+                
+                <section class="porcentajes">
+                    <h5>&nbsp&nbsp Transport <%= (data.transport).toLocaleString('en') %>
+                    </h5>
+                
+                    <div class="progress">
+                
+                        <div class="progress-bar" style="width:<%=parseFloat((data.transport/total)*100).toFixed(2)%>%">
+                            <%=parseFloat((data.transport /total)*100).toFixed(2)%>%
+                        </div>
+                
+                    </div>
+                
+                    <h5>&nbsp&nbsp Restaurants <%= (data.restaurants).toLocaleString('en') %>
+                    </h5>
+                
+                    <div class="progress">
+                
+                        <div class="progress-bar" style="width:<%=parseFloat((data.restaurants/total)*100).toFixed(2)%>%">
+                            <%=parseFloat((data.restaurants /total)*100).toFixed(2)%>%
+                        </div>
+                
+                    </div>
+                
+                    <h5>&nbsp&nbsp Freetime <%= (data.freetime).toLocaleString('en') %>
+                    </h5>
+                
+                    <div class="progress">
+                
+                        <div class="progress-bar" style="width:<%=parseFloat((data.freetime/total)*100).toFixed(2)%>%">
+                            <%=parseFloat((data.freetime /total)*100).toFixed(2)%>%
+                        </div>
+                
+                    </div>
+                
+                    <h5>&nbsp&nbsp Groceries <%= (data.groceries).toLocaleString('en') %>
+                    </h5>
+                
+                    <div class="progress">
+                
+                        <div class="progress-bar" style="width:<%=parseFloat((data.groceries/total)*100).toFixed(2)%>%">
+                            <%=parseFloat((data.groceries /total)*100).toFixed(2)%>%
+                        </div>
+                
+                    </div>
+                
+                    <h5>&nbsp&nbsp Health <%= (data.health).toLocaleString('en') %>
+                    </h5>
+                
+                    <div class="progress">
+                
+                        <div class="progress-bar" style="width:<%=parseFloat((data.health/total)*100).toFixed(2)%>%">
+                            <%=parseFloat((data.health /total)*100).toFixed(2)%>%
+                        </div>
+                
+                    </div>
+                
+                    <h5>&nbsp&nbsp Pet <%= (data.pet).toLocaleString('en') %>
+                    </h5>
+                
+                    <div class="progress">
+                
+                        <div class="progress-bar" style="width:<%=parseFloat((data.pet/total)*100).toFixed(2)%>%">
+                            <%=parseFloat((data.pet /total)*100).toFixed(2)%>%
+                        </div>
+                
+                    </div>
+                
+                    <h5>&nbsp&nbsp Bank <%= (data.bank).toLocaleString('en') %>
+                    </h5>
+                
+                    <div class="progress">
+                
+                        <div class="progress-bar" style="width:<%=parseInt((data.bank/total)*100).toFixed(2)%>%">
+                            <%=parseFloat((data.bank /total)*100).toFixed(2) %>%
+                        </div>
+                
+                    </div>
+                
+                    <h5>&nbsp&nbsp Gifts <%= (data.gift).toLocaleString('en') %>
+                    </h5>
+                
+                    <div class="progress">
+                
+                        <div class="progress-bar" style="width:<%=parseFloat((data.gift/total)*100).toFixed(2)%>%">
+                            <%=parseFloat((data.gift /total)*100).toFixed(2)%>%
+                        </div>
+                
+                    </div>
+                
+                    <h5>&nbsp&nbsp Home <%= (data.home).toLocaleString('en') %>
+                    </h5>
+                
+                    <div class="progress">
+                
+                        <div class="progress-bar" style="width:<%=parseFloat((data.home/total)*100).toFixed(2)%>%">
+                            <%=parseFloat((data.home /total)*100).toFixed(2)%>%
+                        </div>
+                
+                    </div>
+                
+                    <h5>&nbsp&nbsp Family <%= (data.family).toLocaleString('en') %>
+                    </h5>
+                
+                    <div class="progress">
+                
+                        <div class="progress-bar" style="width:<%=parseFloat((data.family/total)*100).toFixed(2)%>%">
+                            <%=parseFloat((data.family /total)*100).toFixed(2)%>%
+                        </div>
+                
+                    </div>
+                
+                    <h5>&nbsp&nbsp Shopping <%= (data.shopping).toLocaleString('en') %>
+                    </h5>
+                
+                    <div class="progress">
+                
+                        <div class="progress-bar" style="width:<%=parseFloat((data.shopping/total)*100).toFixed(2)%>%">
+                            <%=parseFloat((data.shopping /total)*100).toFixed(2)%>%
+                        </div>
+                
+                    </div>
+                
+                    <h5>&nbsp&nbsp Others <%= (data.others).toLocaleString('en') %>
+                    </h5>
+                
+                    <div class="progress">
+                
+                        <div class="progress-bar" style="width:<%=parseFloat((data.others/total)*100).toFixed(2)%>%">
+                            <%=parseFloat((data.others /total)*100).toFixed(2)%>%
+                        </div>
+                
+                    </div>
+                
+                
+                
+                
+                
+                
+                </section>
 
             <div class="grafico">
                 <canvas id="diagrama"> </canvas>
             </div>
+            <div class="graficoPie">
+                <canvas id="diagramaPie"></canvas>
+            </div>
+            
+           
+            <% }else{ %>
 
+            <div class="grafico">
+
+                <h5>Here you can view one resumen about your expenses, just select one time period.</h5>
+
+            </div>
+
+
+                <% } %>
         </div>
 
 
@@ -198,11 +359,11 @@
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["freeTime", 'Restaurants', 'Transport', 'Groceries', 'Health', 'Pet',"Bank", "Gifts", "Home","Family","Shopping","Others"],
+            labels: ["FreeTime", 'Restaurants', 'Transport', 'Groceries', 'Health', 'Pet',"Bank", "Gifts", "Home","Family","Shopping","Others"],
             datasets: [{
                 label: 'Expenses',
-                data: [<%=data.freetime %>, <%=data.restaurants %>, <%=data.transport %>, <%=data.groceries %>, <%=data.health %>, <%=data.pet %>,<%=data.bank %>,<%=data.gift%>, <%=data.home %>, <%=data.family %>,<%=data.shopping %>,<%=data.others %>],
-                borderWidth: 2
+                data: [<%=data.freetime %>, <%=data.restaurants %>, <%=data.transport %>, <%=data.groceries %>, <%=data.health %>, <%=data.pet %>,<%=data.bank %>,<%=data.gift%>, <%=data.home %>, <%=data.family %>,<%=data.shopping %>,<%=data.others %>]
+                
             }]
         },
         options: {
@@ -214,7 +375,29 @@
         }
     });
 
+    const ctxPie = document.getElementById("diagramaPie")
 
+    new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: ["FreeTime", 'Restaurants', 'Transport', 'Groceries', 'Health', 'Pet', "Bank", "Gifts", "Home", "Family", "Shopping", "Others"],
+                datasets: [{
+                    label: 'Expenses',
+                    data: [<%=data.freetime %>, <%=data.restaurants %>, <%=data.transport %>, <%=data.groceries %>, <%=data.health %>, <%=data.pet %>,<%=data.bank %>,<%=data.gift %>, <%=data.home %>, <%=data.family %>,<%=data.shopping %>,<%=data.others %>],
+                    hoverOffset: 20
+
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        
 </script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
