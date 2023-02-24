@@ -35,10 +35,19 @@ const { format } = require("./database/db");
 const { render } = require("ejs");
 
 
+// Rutas en archivos externos
+
+const login = require("./public/routes/login")
+
+app.use(login)
 
 
 // Rutas gets
     app.get("/", (req,res) =>{
+        if (req.session.username) {
+            console.log("USUARIO:", req.session.username)
+            
+        }
 
         // Consultamos el valor de las cuentas en la bd
         connection.query(`SELECT * FROM accounts`, async (error,rows, fields)=>{
@@ -339,6 +348,9 @@ app.post("/add",async (req, res) => {
     let expense = req.body.expense
     let category = req.body.inputcategory
     let notes = req.body.notes
+    if(notes==""){
+        notes = "Sin comentario."
+    }
     let fechaElegida = req.body.inputfecha
     connection.query(`INSERT into categorias (fechagasto,cuentas,${category},notes,nombre) VALUES("${fechaElegida}","${cuenta}", ${expense},"${notes}","${category}");`,async function (error) {
         if (error) {
