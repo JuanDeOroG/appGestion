@@ -26,6 +26,15 @@
     font-size: 40px;
     font-family: sans-serif;
 }
+@media only screen and (max-width: 768px) {
+
+    .box {
+        padding: 5px;
+        width: 150px;
+            height: 100px;
+    }
+}
+
 
 .modal-content,.cuadricula{
         background-color: #4b1979;}
@@ -36,6 +45,20 @@
     height: 410px;
     width: 440px;
     border-radius: 20px;
+}
+@media only screen and (max-width: 448px) {
+
+    .box {
+        padding: 5px;
+        width: 150px;
+        height: 100px;
+    }
+
+    .modal-content,
+    .modal-body {
+        width: 100%;
+        transform: scale(0.7 0.7);
+    }
 }
 
 .btnAdd{

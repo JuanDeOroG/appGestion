@@ -30,7 +30,55 @@ h4{
     justify-content: space-around;
     flex-wrap: wrap;
 }
+@media only screen and (max-width: 991px) {
 
+    .cards_list {
+        justify-content: center;
+        flex-wrap: nowrap;
+    }
+    .categorias{
+        margin-left: 100px;
+        gap: 50px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    .cards_list {
+        justify-content: center;
+    }
+
+    .categorias div{
+       width: 400px;
+    }}
+@media only screen and (max-width: 571px) {
+
+    .cards_list {
+        justify-content: center;
+    }
+    .categorias{
+        margin-left: 10%;
+    }
+
+    .categorias div {
+        width: 350px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+
+    .cards_list {
+        justify-content: center;
+    }
+
+    .categorias {
+        margin-left: 10%;
+    }
+
+    .categorias div {
+        width: 300px;
+    }
+}
 .card {
     background-color: gray;
     margin: 3px auto;
@@ -81,12 +129,7 @@ h4{
     color: black;
 }
 
-@media all and (max-width: 500px) {
-    .card-list {
-        /* On small screens, we are no longer using row direction but column */
-        flex-direction: column;
-    }
-}
+
 
 .container{
     margin-top: 0px;
@@ -96,3 +139,4 @@ h4{
 .inputcategory,.inputfecha{
     display: none;
 }
+
