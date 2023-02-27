@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="resources/css/login/login.css">
+</head>
+
+<body>
+
+    <% if(message=="registrado"){ %>
+
+    <form action="/login" method="GET">
+        <h1><span>¡You are registered!</span></h1>
+        <h1> Click on purple button to log in</h1>
+
+
+        <button type="submit" class="btn"><a class="white" href="/login">Log In</a></button>
+        <h6>Neat people like you are always welcome.</h6>
+
+    </form>
+
+    <footer>
+        <h5>it's time of a order life</h5>
+    </footer>
+    <% }else if(message=="user already exist"){ %>
+        <form action="/register" method="get">
+            <h1><span>User digited already exist, try with other letters</span></h1>
+            <h1> Click on purple button to try again</h1>
+        
+        
+            <button type="submit" class="btn"><a class="white" href="/register">Sing up</a></button>
+            <h6>Neat people like you are always welcome.</h6>
+        
+        </form>
+        
+        <footer>
+            <h5>it's time of a order life</h5>
+        </footer>
+
+        <% }else if(message=="no login"){ %>
+                <form action="/login" method="get">
+                    <h1><span>You must first log in with your user and password...</span></h1>
+                    <h1> Click on purple button to log in</h1>
+                
+                
+                    <button type="submit" class="btn"><a class="white" href="/login">Log in</a></button>
+                    <h6>Neat people like you are always welcome.</h6>
+                
+                </form>
+                
+                <footer>
+                    <h5>it's time of a order life</h5>
+                </footer>
+
+            <% } %>
+</body>
+
+</html>

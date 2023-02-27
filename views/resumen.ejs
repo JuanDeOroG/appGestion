@@ -50,133 +50,133 @@
                 <!-- Barras de porcentaje de gastos -->
                 
                 <section class="porcentajes">
-                    <h5>&nbsp&nbsp Transport <%= (data.transport).toLocaleString('en') %>
+                    <h5>&nbsp&nbsp Transport <%= (data.transport).toLocaleString('en') %>$
                     </h5>
                 
                     <div class="progress">
                 
-                        <div class="progress-bar" style="width:<%=parseFloat((data.transport/total)*100).toFixed(2)%>%">
+                        <div class="progress-bar progress-bar-striped" style="width:<%=parseFloat((data.transport/total)*100).toFixed(2)%>%">
                             <%=parseFloat((data.transport /total)*100).toFixed(2)%>%
                         </div>
                 
                     </div>
                 
-                    <h5>&nbsp&nbsp Restaurants <%= (data.restaurants).toLocaleString('en') %>
+                    <h5>&nbsp&nbsp Restaurants <%= (data.restaurants).toLocaleString('en') %>$
                     </h5>
                 
                     <div class="progress">
                 
-                        <div class="progress-bar" style="width:<%=parseFloat((data.restaurants/total)*100).toFixed(2)%>%">
+                        <div class="progress-bar progress-bar-striped bg-success" style="width:<%=parseFloat((data.restaurants/total)*100).toFixed(2)%>%">
                             <%=parseFloat((data.restaurants /total)*100).toFixed(2)%>%
                         </div>
                 
                     </div>
                 
-                    <h5>&nbsp&nbsp Freetime <%= (data.freetime).toLocaleString('en') %>
+                    <h5>&nbsp&nbsp Freetime <%= (data.freetime).toLocaleString('en') %>$
                     </h5>
                 
                     <div class="progress">
                 
-                        <div class="progress-bar" style="width:<%=parseFloat((data.freetime/total)*100).toFixed(2)%>%">
+                        <div class="progress-bar progress-bar-striped bg-info" style="width:<%=parseFloat((data.freetime/total)*100).toFixed(2)%>%">
                             <%=parseFloat((data.freetime /total)*100).toFixed(2)%>%
                         </div>
                 
                     </div>
                 
-                    <h5>&nbsp&nbsp Groceries <%= (data.groceries).toLocaleString('en') %>
+                    <h5>&nbsp&nbsp Groceries <%= (data.groceries).toLocaleString('en') %>$
                     </h5>
                 
                     <div class="progress">
                 
-                        <div class="progress-bar" style="width:<%=parseFloat((data.groceries/total)*100).toFixed(2)%>%">
+                        <div class="progress-bar progress-bar-striped bg-warning" style="width:<%=parseFloat((data.groceries/total)*100).toFixed(2)%>%">
                             <%=parseFloat((data.groceries /total)*100).toFixed(2)%>%
                         </div>
                 
                     </div>
                 
-                    <h5>&nbsp&nbsp Health <%= (data.health).toLocaleString('en') %>
+                    <h5>&nbsp&nbsp Health <%= (data.health).toLocaleString('en') %>$
                     </h5>
                 
                     <div class="progress">
                 
-                        <div class="progress-bar" style="width:<%=parseFloat((data.health/total)*100).toFixed(2)%>%">
+                        <div class="progress-bar progress-bar-striped bg-danger" style="width:<%=parseFloat((data.health/total)*100).toFixed(2)%>%">
                             <%=parseFloat((data.health /total)*100).toFixed(2)%>%
                         </div>
                 
                     </div>
                 
-                    <h5>&nbsp&nbsp Pet <%= (data.pet).toLocaleString('en') %>
+                    <h5>&nbsp&nbsp Pet <%= (data.pet).toLocaleString('en') %>$
                     </h5>
                 
                     <div class="progress">
                 
-                        <div class="progress-bar" style="width:<%=parseFloat((data.pet/total)*100).toFixed(2)%>%">
+                        <div class="progress-bar progress-bar-striped" style="width:<%=parseFloat((data.pet/total)*100).toFixed(2)%>%">
                             <%=parseFloat((data.pet /total)*100).toFixed(2)%>%
                         </div>
                 
                     </div>
                 
-                    <h5>&nbsp&nbsp Bank <%= (data.bank).toLocaleString('en') %>
+                    <h5>&nbsp&nbsp Bank <%= (data.bank).toLocaleString('en') %>$
                     </h5>
                 
                     <div class="progress">
                 
-                        <div class="progress-bar" style="width:<%=parseInt((data.bank/total)*100).toFixed(2)%>%">
+                        <div class="progress-bar progress-bar-striped bg-success" style="width:<%=parseInt((data.bank/total)*100).toFixed(2)%>%">
                             <%=parseFloat((data.bank /total)*100).toFixed(2) %>%
                         </div>
                 
                     </div>
                 
-                    <h5>&nbsp&nbsp Gifts <%= (data.gift).toLocaleString('en') %>
+                    <h5>&nbsp&nbsp Gifts <%= (data.gift).toLocaleString('en') %>$
                     </h5>
                 
                     <div class="progress">
                 
-                        <div class="progress-bar" style="width:<%=parseFloat((data.gift/total)*100).toFixed(2)%>%">
+                        <div class="progress-bar progress-bar-striped bg-info" style="width:<%=parseFloat((data.gift/total)*100).toFixed(2)%>%">
                             <%=parseFloat((data.gift /total)*100).toFixed(2)%>%
                         </div>
                 
                     </div>
                 
-                    <h5>&nbsp&nbsp Home <%= (data.home).toLocaleString('en') %>
+                    <h5>&nbsp&nbsp Home <%= (data.home).toLocaleString('en') %>$
                     </h5>
                 
                     <div class="progress">
                 
-                        <div class="progress-bar" style="width:<%=parseFloat((data.home/total)*100).toFixed(2)%>%">
+                        <div class="progress-bar progress-bar-striped bg-warning" style="width:<%=parseFloat((data.home/total)*100).toFixed(2)%>%">
                             <%=parseFloat((data.home /total)*100).toFixed(2)%>%
                         </div>
                 
                     </div>
                 
-                    <h5>&nbsp&nbsp Family <%= (data.family).toLocaleString('en') %>
+                    <h5>&nbsp&nbsp Family <%= (data.family).toLocaleString('en') %>$
                     </h5>
                 
                     <div class="progress">
                 
-                        <div class="progress-bar" style="width:<%=parseFloat((data.family/total)*100).toFixed(2)%>%">
+                        <div class="progress-bar progress-bar-striped bg-danger" style="width:<%=parseFloat((data.family/total)*100).toFixed(2)%>%">
                             <%=parseFloat((data.family /total)*100).toFixed(2)%>%
                         </div>
                 
                     </div>
                 
-                    <h5>&nbsp&nbsp Shopping <%= (data.shopping).toLocaleString('en') %>
+                    <h5>&nbsp&nbsp Shopping <%= (data.shopping).toLocaleString('en') %>$
                     </h5>
                 
                     <div class="progress">
                 
-                        <div class="progress-bar" style="width:<%=parseFloat((data.shopping/total)*100).toFixed(2)%>%">
+                        <div class="progress-bar progress-bar-striped" style="width:<%=parseFloat((data.shopping/total)*100).toFixed(2)%>%">
                             <%=parseFloat((data.shopping /total)*100).toFixed(2)%>%
                         </div>
                 
                     </div>
                 
-                    <h5>&nbsp&nbsp Others <%= (data.others).toLocaleString('en') %>
+                    <h5>&nbsp&nbsp Others <%= (data.others).toLocaleString('en') %>$
                     </h5>
                 
                     <div class="progress">
                 
-                        <div class="progress-bar" style="width:<%=parseFloat((data.others/total)*100).toFixed(2)%>%">
+                        <div class="progress-bar progress-bar-striped bg-success" style="width:<%=parseFloat((data.others/total)*100).toFixed(2)%>%">
                             <%=parseFloat((data.others /total)*100).toFixed(2)%>%
                         </div>
                 
@@ -231,8 +231,9 @@
                                     </div>
                             
                             <div class="modal-footer">
+                                <h4>Remember to be a tidy person</h3>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
-                                <button type="submit" id="save" class="btn btn-danger">Select</button>
+                                
                             </div>
                         </div>
                     </form>
@@ -332,13 +333,13 @@
     <nav class="naav">
         <ul class="nav justify-content-center">
             <li class="nav-item">
-                <a class="nav-link active" href="/">Cuentas</a>
+                <a class="nav-link active" href="/">Accounts</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/categorias">Categorias</a>
+                <a class="nav-link" href="/categorias">Categories</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="/transactions">Transacciones</a>
+                <a class="nav-link " href="/transactions">Transactions</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="#">Resumen</a>
@@ -362,7 +363,16 @@
             labels: ["FreeTime", 'Restaurants', 'Transport', 'Groceries', 'Health', 'Pet',"Bank", "Gifts", "Home","Family","Shopping","Others"],
             datasets: [{
                 label: 'Expenses',
-                data: [<%=data.freetime %>, <%=data.restaurants %>, <%=data.transport %>, <%=data.groceries %>, <%=data.health %>, <%=data.pet %>,<%=data.bank %>,<%=data.gift%>, <%=data.home %>, <%=data.family %>,<%=data.shopping %>,<%=data.others %>]
+                data: [<%=data.freetime %>, <%=data.restaurants %>, <%=data.transport %>, <%=data.groceries %>, <%=data.health %>, <%=data.pet %>,<%=data.bank %>,<%=data.gift%>, <%=data.home %>, <%=data.family %>,<%=data.shopping %>,<%=data.others %>],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 119, 4, 0.7)',
+                    
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(255, 205, 86, 0.7)',
+                    'rgba(153, 102, 255, 0.7)',
+                    'rgba(201, 203, 207, 0.7)', "rgba(255, 0, 255, 0.7)","rgba(0, 200, 135, 0.799)", "rgba(255, 0, 0, 0.7)","rgba(0, 0, 255, 0.7)"
+                ],
                 
             }]
         },
@@ -384,7 +394,8 @@
                 datasets: [{
                     label: 'Expenses',
                     data: [<%=data.freetime %>, <%=data.restaurants %>, <%=data.transport %>, <%=data.groceries %>, <%=data.health %>, <%=data.pet %>,<%=data.bank %>,<%=data.gift %>, <%=data.home %>, <%=data.family %>,<%=data.shopping %>,<%=data.others %>],
-                    hoverOffset: 20
+                    hoverOffset: 20,
+                    
 
                 }]
             },

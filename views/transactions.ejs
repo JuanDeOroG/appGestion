@@ -40,7 +40,7 @@
             
             <% if (datos==0 && ingresos==false) { %>
                 <div class="payment-card">
-                        <h2 class="payment-card__title">Aún no se registran transacciones en esta fecha.</h2>
+                        <h2 class="payment-card__title">There are not transactions in this period.</h2>
                         
                     </div>
                 
@@ -48,15 +48,15 @@
             <% for(x of datos){ if(x[x.nombre]!=0){%>
                     
                     <div class="payment-card">
-                        <h2 class="payment-card__title">Categoría de Pago: <%= x.nombre %></h2>
-                        <p class="payment-card__method">Método de Pago: <%= x.cuentas %> </p>
+                        <h2 class="payment-card__title">Payment category: <%= x.nombre %></h2>
+                        <p class="payment-card__method">Payment method: <%= x.cuentas %> </p>
                         <% if(x[x.nombre]> 0){ %>
-                        <p class="payment-card__amount">Monto Pagado: <%= x[x.nombre] %></p>
+                        <p class="payment-card__amount">Amount paid: <%= (x[x.nombre]).toLocaleString('en') %>$</p>
                         <% }else{ %>
-                        <p class="payment-card__amount" style="color:#0da10d">Dinero recuperado:  <%= Math.abs(Math.abs(x[x.nombre])) %></p>
+                        <p class="payment-card__amount" style="color:#0da10d">Dinero recuperado:  <%= (Math.abs(Math.abs(x[x.nombre]))).toLocaleString('en')  %>$</p>
                         <% } %>
 
-                        <p class="payment-card__note">Nota del Pago: <%= x.notes %> </p>
+                        <p class="payment-card__note">Note: <%= x.notes %> </p>
                     </div>
                     
                 <% }} %>
@@ -70,19 +70,19 @@
                 <% for(x of ingresos){ %>
                 
                     <div class="payment-card">
-                        <h2 class="payment-card__title">Causa de ingreso: <%= x.about %>
+                        <h2 class="payment-card__title">Cause: <%= x.about %>
                         </h2>
-                        <p class="payment-card__method">Método de Pago: <%= x.name %>
+                        <p class="payment-card__method">Payment method: <%= x.name %>
                         </p>
                         <% if (x.cash!=0){ %>
-                            <p class="payment-card__amount" style="color:#0da10d ;">Monto ingresado: <%= x.cash %>
+                            <p class="payment-card__amount" style="color:#0da10d ;">Deposited amount: <%= (x.cash).toLocaleString('en') %>$
                         </p><% }else{
 
-                        %><p class="payment-card__amount" style="color:#0da10d ;">Monto ingresado: <%= x.card %>
+                        %><p class="payment-card__amount" style="color:#0da10d ;">Deposited amount: <%= (x.card).toLocaleString('en') %>$
                         <% }%>
                     
 
-                         <p class="payment-card__note">Nota del ingreso: <%= x.note %></p>
+                         <p class="payment-card__note">Note: <%= x.note %></p>
                     </div>
                 
                     <% }} %>

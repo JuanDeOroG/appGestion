@@ -6,7 +6,7 @@ const connection = require("../../database/db");
 
 app.use(session({
     secret: "secret",
-    resave: true,
+    resave: false,
     saveUninitialized: true
 }))
 
@@ -27,15 +27,15 @@ app.post("/register", async(req, res)=>{
     connection.query(`INSERT INTO USERS (username,password,email) values ("${username}","${password}","${email}")`, async (error) => {
         if (error) {
             if (error.errno == 1062) {
-                res.send("El usuario digitado ya se encuentra registrado, por favor use otro nombre de usuario")
+                res.render("login/message",{message:"user already exist"})
                 
             }else{
             console.log("ERROR ",error)
-            res.send("Hubo un error al momento de insertar el usuario.")
+            res.send("problems with the database...")
             }
 
         } else {
-            res.render("login/registered")
+            res.render("login/message",{message:"registrado"})
         }
     })
 
