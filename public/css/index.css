@@ -82,3 +82,14 @@ form label{
 .accountname{
     display: none;
 }
+
+.logout{
+    border-radius: 10px;
+    border: solid red 1px;
+    background-color: red;
+    padding: 5px 30px;
+    float: right;
+    color: white;
+    margin-bottom: 15px;
+    transform: scale(1.1);
+}

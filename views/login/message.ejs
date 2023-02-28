@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+        <link rel="icon" href="resources/img/PurpleCoin.png">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,7 +58,23 @@
                     <h5>it's time of a order life</h5>
                 </footer>
 
-            <% } %>
+            <% }else if(message=="no encontrado"){ %>
+                <form >
+                    <h1><span>User does not exist or incorrect password...</span></h1>
+                    <h1> Click on purple button to register</h1>
+                
+                    <button type="button" href="/login" class="btn" style="margin-bottom: 10px;"><a class="white" href="/login">Try again</a></button>
+
+                    <button type="button" class="btn"><a class="white" href="/register">Register</a></button>
+                    <h6>Neat people like you are always welcome.</h6>
+                
+                </form>
+                
+                <footer>
+                    <h5>it's time of a order life</h5>
+                </footer>
+
+                <% } %>
 </body>
 
 </html>

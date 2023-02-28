@@ -59,11 +59,16 @@ app.post("/auth", async (req,res)=>{
             console.log(req.session.username)
             res.redirect("/")
         }else if(rows.length==0){
-            res.send("No se encontró ningun usuario")
+            res.render("login/message",{message:"no encontrado"})
         }else{
             res.send("Algo extraño sucedió...")
         }
     })
 
+})
+
+app.post("/logout",(req,res)=>{
+    req.session.username=undefined
+    res.redirect("/login")
 })
 module.exports = app;

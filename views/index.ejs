@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="resources/img/PurpleCoin.png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,18 +18,20 @@
 <body>
     <header class="header">
     <h3 class="alltitle">All accounts</h3>
-
+    
 
     </header>
 
     <div class="container">
-        
 
     
     
         <div class="totalcuentas">
             <h4  class="bgpurple"><%=username %>'s accounts</h4>
         </div>
+        <form action="/logout" method="post">
+            <button class="logout">Log out</button>
+        </form>
 
        
         <div class="card">
@@ -96,6 +99,8 @@
             
             
         </div>
+
+        
         
        
 
