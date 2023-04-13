@@ -91,8 +91,8 @@ form {
     border-radius: 6px;
     padding: 20px;
     padding-top: 30px;
-    width: 40%;
-    margin: 50px auto;
+    width: 80%;
+    margin: 10% auto;
     box-shadow: 15px 15px 0px rgba(0, 0, 0, .1);
 }
 
@@ -167,3 +167,4 @@ h6 {
 .white{
     color: white;
 }
+
