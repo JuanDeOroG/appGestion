@@ -35,7 +35,7 @@
             <label for="fecha_actual">Calendary: </label>
             <input type="date" name="fecha_actual" id="fecha_actual" value="<%= fecha_actual %>">
             <% if(total!="undefined" ){ %>
-                <h3> El total de esta fecha es: <%= total %>$</h3>
+                <h3> El total de esta fecha es: <%= (total).toLocaleString('en') %>$</h3>
                 <% } %>
         </form>
 
