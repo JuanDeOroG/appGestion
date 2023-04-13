@@ -289,10 +289,17 @@ app.post("/", async (req,res)=>{
             note = "No comment."
 
         }
+        if(inputcard==undefined){
+            inputcard=0
+        }
+        if(inputcash==undefined){
+            inputcash=0
+        }
 
         let fecha_actual = moment().format('YYYY-MM-DD')
         connection.query(`INSERT INTO accounts (card,cash, about, note,fecha,name,username) values("${inputcard}","${inputcash}","${about}","${note}","${fecha_actual}","${name}","${req.session.username}")`, async (error, rows, fields) => {
             if (error) {
+                console.log(error)
                 res.send("HUBO UN ERROR AL INGRESAR DINERO EN LA CUENTA")
 
             } else {
