@@ -46,7 +46,7 @@ app.post("/auth", async (req,res)=>{
     let username= req.body.username
     let password = req.body.password
 
-    connection.query(`SELECT * from users WHERE username="${username}" AND password="${password}"`,async (error,rows)=>{
+    connection.query(`SELECT * from USERS WHERE username="${username}" AND password="${password}"`,async (error,rows)=>{
         if (error) {
             console.log(error)
             res.send("Hubo un error...")
