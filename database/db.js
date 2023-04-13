@@ -1,17 +1,18 @@
 const mysql = require("mysql")
-const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
+const connection = mysql.createPool({
+    connectionLimit:10,
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "gestionapp"
 })
 
-connection.connect(function (error) {
+connection.getConnection(function (error) {
     if (error) {
         console.log("Error de conexion:", error)
         return
-    }
-    console.log("Todo correcto con la BD")
+    }else{    console.log("Todo correcto con la BD")
+}
 
 })
 
